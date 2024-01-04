@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Generator</title>
+    <style> @import url('https://fonts.googleapis.com/css2?family=Anton&family=Kalnia:wght@600&family=Montserrat&family=Rubik+Doodle+Shadow&display=swap'); </style>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!-- <link rel="stylesheet" href="./assets/style/reset.css" /> -->
     <link rel="stylesheet" href="./assets/style/style.css" />
     <script src="jquery-3.7.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/b280342818.js" crossorigin="anonymous"></script>
 </head>
+
 
 <body>
     <main>
     <!-- initial div, w3 schools 2 columns -->
         <!-- first column, only includes header and paragraph-->
         <!-- second column, includes form -->
-        <div class="w3-row w3-border">
-            <div class="w3-half w3-container">
-              <h1>Don't know what to watch?</h1>  
-              <p>We can help</p>
+        <div class="w3-row w3-padding-large w3-container">
+            <div class="w3-half w3-container w3-padding-64">
+              <h1 id="header-h1">Can't decide on a movie?</h1>  
+              <p id="header-p">No more endless scrolling...</p>
+              <p><i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></i> Fill in the form</p>
+              <p><i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></i> Press generate</p>
+              <p><i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></i> If you don't like the trailer, you can go again!</p>
             </div>
-            <div class="w3-half w3-container">
+            <div class="w3-half w3-container w3-padding-64">
                 <form>
-                    <h2>Generate a Movie Idea</h2>
+                    <h2>Find Your Movie</h2>
 
                     <label for="genre">Select Genre:</label>
-                    <select id="genre" name="genre" required>
+                    <select id="genre-selector" name="genre" required>
+                        <option value="any-genre">ANY</option>
                         <option value="action">Action</option>
                         <option value="comedy">Comedy</option>
                         <option value="drama">Drama</option>
@@ -34,29 +41,19 @@
 
                     </select>
 
-                    <!-- <label for="imdb-rating">Select Minimum iMDB Rating:</label>
-                    <select id="rating" name="rating" required>
-                        <option value="1">1/10</option>
-                        <option value="2">2/10</option>
-                        <option value="3">3/10</option>
-                        <option value="4">4/10</option>
-                        <option value="5">5/10</option>
-                        <option value="6">6/10</option>
-                        <option value="7">7/10</option>
-                        <option value="8">8/10</option>
-                        <option value="9">9/10</option>
-                    </select> -->
 
                     <label for="classification">Classification:</label>
-                    <select id="rating" name="rating" required>
+                    <select id="rating-selector" name="rating" required>
+                        <option value="any-classification">ANY</option>
                         <option value="G">G</option>
                         <option value="PG">PG </option>
                         <option value="M">M</option>
                         <option value="MA">MA 15+</option>
                         <option value="R">R 18+</option>
+                        
                     </select>
 
-                    <button type="generate-btn">Generate Movie</button>
+                    <button id="generate-btn" type="button">Generate Movie</button>
                 </form> 
             </div>
           </div>
@@ -68,26 +65,25 @@
         <!-- second colum, poster -->
         <!-- third column, dynamic -->
             <!-- "title, (year)", "synopsis", "button: want something else?" -->
-            <div class="w3-center">
+            <div id="movie-choice" class="w3-center hidden">
                 <h2>Today's movie is...</h2>
                 <!-- <p class="w3-large"></p> -->
-              </div>
               <br>
 
-              
               <div class="w3-row w3-border">
-                <div class="w3-third w3-container w3-purple">
+                <div class="w3-third w3-container">
                   <h5>Trailer</h5>  
                   <iframe></iframe>
                 </div>
-                <div class="w3-third w3-container w3-purple">
+                <div class="w3-third w3-container">
                   <h5>Poster</h5>  
                 </div>
-                <div class="w3-third w3-container w3-purple">
+                <div class="w3-third w3-container">
                   <h5>Title (Year)</h5>
                   <p>Synopsis: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ab qui enim, aliquam alias a beatae, vero magni nulla blanditiis eum corrupti consequatur consectetur expedita ipsum! Eos delectus sit consectetur.</p>
                   <button id="new-movie-btn">Mmm, not feeling this one...</button>  
                 </div>
+              </div>
               </div>
               <br>
 
@@ -98,4 +94,3 @@
 
     <script src="./assets/js/script.js"></script>
 </body>
-

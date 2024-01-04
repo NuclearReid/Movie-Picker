@@ -1,9 +1,22 @@
+/* upon clicking #generate-button */
+/* remove this class from #movie-choice div */
+/* and scroll to the top of div */
+.hidden {
+    display: none;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #111;
     color: #fff;
+}
+
+.container {
+    background: linear-gradient(to bottom right, #000000, #5d5858);
+    margin: 0;
+    height: 100vh; 
 }
 
 header {
@@ -12,34 +25,24 @@ header {
     text-align: center;
 }
 
-/* main {
+main {
     padding: 20px;
-} */
+}
+
+h1 {
+
+}
 
 h2 {
     color: #4f8998;
 }
 
-.container {
-    background: linear-gradient(to bottom right, #8c8787, #554f4f);
-    margin: 0;
-    height: 100vh; 
-    display: flex;
-    flex: 1;
-}
+#header-h1 {
+    font-family: 'Kalnia', sans-serif;}
 
-.col-1 {
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 30%;
-}
-
-.col-1 {
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 70%;
-}
-
+/* #header-p {
+    font-family: 'Montserrat', sans-serif;
+} */
 
 form {
     max-width: 600px;
@@ -77,11 +80,11 @@ button {
     cursor: pointer;
 }
 
-footer {
+/* footer {
     text-align: center;
     padding: 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color: #333;
-}
+} */
