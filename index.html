@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Generator</title>
+    <style> @import url('https://fonts.googleapis.com/css2?family=Anton&family=Kalnia:wght@600&family=Montserrat&family=Old+Standard+TT:ital@1&family=Rubik+Doodle+Shadow&display=swap');</style>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- <link rel="stylesheet" href="./assets/style/reset.css" /> -->
+    <link rel="stylesheet" href="./assets/style/style.css" />
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/b280342818.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+
+    <!-- Side Navigation that shows previously searched movies -->
+<!-- <nav class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-center" style="display:none" id="mySidebar">
+    <h1 class="w3-large w3-text-theme">Previously Viewed</h1>
+    <button class="w3-bar-item w3-button" onclick="w3_close()">Close <i class="fa-solid fa-remove" style="color:#ffffff;"></i></button>
+    <a href="#" class="w3-bar-item w3-button">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button">Link 3</a>
+    <a href="#" class="w3-bar-item w3-button">Link 4</a>
+  </nav> -->
+
+    <main>
+    <!-- initial div, w3 schools 2 columns -->
+        <div class="w3-row w3-padding-large container">
+            <div class="w3-half w3-container w3-padding-64">
+              <h1 id="header-h1">Can't decide on a movie?</h1>  
+              <p id="header-p">No more endless scrolling...</p>
+              <p><i class="fa-solid fa-share" style="color: #ffffff;"></i></i> Fill in the form</p>
+              <p><i class="fa-solid fa-share" style="color: #ffffff;"></i></i> Press generate</p>
+              <p><i class="fa-solid fa-rotate-right" style="color: #ffffff;"></i></i> If you don't like the trailer, you can go again!</p>
+            </div>
+            <div class="w3-half w3-container w3-padding-64">
+                <form>
+                    <h2 id="h2-form">Movie Generator</h2>
+
+                    <label for="genre">Select Genre:</label>
+                    <select id="genre" name="genre" required>
+                        <option value="any-genre">ANY</option>
+                        <option value="action">Action</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="drama">Drama</option>
+                        <option value="fantasy">Fantasy</option>
+                        <!-- Add more genres as needed -->
+
+                    </select>
+
+                    <label for="rating">Classification:</label>
+                    <select id="rating" name="rating" required>
+                        <option value="any-classification">ANY</option>
+                        <option value="G">G</option>
+                        <option value="PG">PG </option>
+                        <option value="M">M</option>
+                        <option value="MA">MA 15+</option>
+                        <option value="R">R 18+</option>
+                        
+                    </select>
+
+                    <button id="generate-btn" type="button">Generate Movie</button>
+                </form> 
+            </div>
+          </div>
+          <br>
+
+    
+    <!-- second div, w3 schools 3 columns  -->
+        <!-- first column, trailer -->
+        <!-- second colum, poster -->
+        <!-- third column, dynamic -->
+            <!-- "title, (year)", "synopsis", "button: want something else?" -->
+            <div id="movie-choice" class="w3-center hidden">
+                <h2>Today's movie is...</h2>
+                <!-- <p class="w3-large"></p> -->
+              <br>
+
+              <div id="selected-movie-info" class="w3-row">
+                <div class="w3-third w3-container">
+                  <iframe id="selected-trailer"></iframe>
+                </div>
+
+                <div class="w3-third w3-container">
+                  <div id="selected-poster"></div>  
+                </div>
+
+                <div class="w3-third w3-container">
+                  <h3 id="selected-title-year">Title (Year)</h3>
+                  <p id="selected-synopsis">Synopsis: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ab qui enim, aliquam alias a beatae, vero magni nulla blanditiis eum corrupti consequatur consectetur expedita ipsum! Eos delectus sit consectetur.</p>
+                  <button id="new-movie-btn">Mmm, not feeling this one...</button>  
+                </div>
+              </div>
+            </div>
+
+
+    <!-- third div, can be done after the other js is done, not sure how to present-->
+    <!-- this will be used as search history, if not in side-nav -->
+        <!-- columns that include "title, (year)" above "poster" -->
+    </main>
+
+    <script src="./assets/js/script.js"></script>
+</body>
