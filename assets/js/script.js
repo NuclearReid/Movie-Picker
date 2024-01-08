@@ -104,6 +104,10 @@ function handleFormSubmit(event){
     movieAPIcall(movieOdbApiUrl);
 }
 
+document.querySelector("#generate-btn").addEventListener("click", () => {
+    window.scrollTo(0,document.body.scrollHeight);
+});
+
 // Basically the same as handleFormSubmit() but doesn't have 'event.preventDefault();' <-- breaks the program if left in
 function handleButtonClick(){
     correctClass = false;
