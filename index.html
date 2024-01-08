@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!-- <link rel="stylesheet" href="./assets/style/reset.css" /> -->
     <link rel="stylesheet" href="./assets/style/style.css" />
-    <script src="jquery-3.7.1.min.js"></script>
+    <!-- <script src="jquery-3.7.1.min.js"></script> -->
     <script src="https://kit.fontawesome.com/b280342818.js" crossorigin="anonymous"></script>
 </head>
 
@@ -36,7 +36,7 @@
               <p><i class="fa-solid fa-rotate-right" style="color: #ffffff;"></i></i> If you don't like the trailer, you can go again!</p>
             </div>
             <div class="w3-half w3-container w3-padding-64">
-                <form>
+                <form id="selectionForm">
                     <h2 id="h2-form">Movie Generator</h2>
 
                     <label for="genre">Select Genre:</label>
@@ -61,7 +61,7 @@
                         
                     </select>
 
-                    <button id="generate-btn" type="button">Generate Movie</button>
+                    <button id="generate-btn" type="submit">Generate Movie</button>
                 </form> 
             </div>
           </div>
@@ -74,13 +74,16 @@
         <!-- third column, dynamic -->
             <!-- "title, (year)", "synopsis", "button: want something else?" -->
             <div id="movie-choice" class="w3-center hidden">
-                <h2>Today's movie is...</h2>
+                <h2 id="movie-choice-title">Today's movie is...</h2>
                 <!-- <p class="w3-large"></p> -->
               <br>
 
               <div id="selected-movie-info" class="w3-row">
                 <div class="w3-third w3-container">
-                  <iframe id="selected-trailer"></iframe>
+                  <iframe id="selected-trailer" width="560" height="315" src="" 
+                  title="YouTube video player" frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowfullscreen></iframe>
                 </div>
 
                 <div class="w3-third w3-container">
@@ -90,7 +93,7 @@
                 <div class="w3-third w3-container">
                   <h3 id="selected-title-year">Title (Year)</h3>
                   <p id="selected-synopsis">Synopsis: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ab qui enim, aliquam alias a beatae, vero magni nulla blanditiis eum corrupti consequatur consectetur expedita ipsum! Eos delectus sit consectetur.</p>
-                  <button id="new-movie-btn">Mmm, not feeling this one...</button>  
+                  <button id="new-movie-btn" type="submit">Mmm, not feeling this one...</button>  
                 </div>
               </div>
             </div>
@@ -100,6 +103,7 @@
     <!-- this will be used as search history, if not in side-nav -->
         <!-- columns that include "title, (year)" above "poster" -->
     </main>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./assets/js/listofmovies.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
