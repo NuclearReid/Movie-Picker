@@ -174,6 +174,9 @@ function handleButtonClick(){
 // picks a movie within their criteria when they click on the form
 $('#selectionForm').on('submit', handleFormSubmit);
 
+document.querySelector("#generate-btn").addEventListener("click", () => {
+    window.scrollTo(0,document.body.scrollHeight);
+  });
 // runs the program again if they click on the 'mmmm not feeling it' button
 $('#new-movie-btn').on('click', handleButtonClick);
 
