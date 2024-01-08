@@ -52,7 +52,9 @@ var horrorMovies = [
   ["Train to Busan", "R 18+"],
   ["It", "R 18+"],
   ["Don't Look Now", "R 18+"],
-  ["Re-Animator", "R 18+"]
+  ["Re-Animator", "R 18+"],
+  ["The Last Airbender", "G"],
+  ["The Last Airbender", "M"]
 
   // "Psycho",
   // "The Shining",
@@ -220,8 +222,6 @@ var dramaMovies = [
 ];
 // ADVENTURE MOVIES
 var adventureMovies = [
-  
-
   ["The Lord of the Rings: The Fellowship of the Ring", "PG"],
   ["Indiana Jones and the Raiders of the Lost Ark", "PG"],
   ["Jurassic Park", "PG"],
@@ -320,8 +320,6 @@ var adventureMovies = [
 ];
 // FANTASY
 var fantasyMovies = [
-  
-
   ["The Wizard of Oz", "G"],
   ["Harry Potter and the Philosopher's Stone", "PG"],
   ["The Chronicles of Narnia: The Lion, the Witch and the Wardrobe", "PG"],
