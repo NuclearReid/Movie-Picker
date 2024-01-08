@@ -8,6 +8,10 @@ body {
     color: #fff;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .container {
     background: linear-gradient(to bottom right, #000000, #666161);
     margin: 0;
@@ -77,12 +81,15 @@ button {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    
 }
+
 
 button:hover {
     box-shadow: inset 0px 0px 8px #ffffff , 0 0 15px #4f8998;
     background-color: #000000;
 }
+
 
 /* footer {
     text-align: center;
