@@ -38,9 +38,8 @@ function handleFormSubmit(event){
     do{
         // I have an if statment for each genre. If the user selects 'any' then I run a random number generator that'll pick one of those if statements at random
         if(genre == 'any-genre'){
-            randomGenre = Math.floor(Math.random()*4);
+            randomGenre = Math.floor(Math.random()*5);
         }
-
         // Each of these if statements essentially work the same, looks to see if the user selected 'action' or if randomGenre is 0
             // the randomGenre is only used if the user selected 'any'
         if(genre == 'action' || randomGenre == 0){
@@ -83,6 +82,17 @@ function handleFormSubmit(event){
             }
         }
 
+        if(genre == 'horror'|| randomGenre == 4){
+            console.log('in horror ' + genre);
+            var horrorMoviePick = Math.floor(Math.random()*horrorMovies.length);
+            chosenMovie = horrorMovies[horrorMoviePick][0];
+            theClass = horrorMovies[horrorMoviePick][1];
+            if(theClass == rating || rating == 'any-classification'){
+                correctClass = true;
+                console.log(chosenMovie +' and the classification '+ theClass);
+            }
+        }
+
         // if the selected classification and movie classification are not the same, correctClass remains false and the loop runs again
     }while(correctClass == false);
 
@@ -104,7 +114,7 @@ function handleButtonClick(){
     // console.log(genre + ' ' + rating);
     do{
         if(genre == 'any-genre'){
-            randomGenre = Math.floor(Math.random()*4);
+            randomGenre = Math.floor(Math.random()*5);
             // console.log(randomGenre);
         }
         if(genre == 'action' || randomGenre == 0){
@@ -141,6 +151,15 @@ function handleButtonClick(){
             var fantasyMoviePick = Math.floor(Math.random()*fantasyMovies.length);
             chosenMovie = fantasyMovies[fantasyMoviePick][0];
             theClass = fantasyMovies[fantasyMoviePick][1];
+            if(theClass == rating || rating == 'any-classification'){
+                correctClass = true;
+                console.log(chosenMovie +' and the classification '+ theClass);
+            }
+        }
+        if(genre == 'horror'|| randomGenre == 4){
+            var horrorMoviePick = Math.floor(Math.random()*horrorMovies.length);
+            chosenMovie = horrorMovies[horrorMoviePick][0];
+            theClass = horrorMovies[horrorMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
                 console.log(chosenMovie +' and the classification '+ theClass);
