@@ -74,13 +74,16 @@
         <!-- third column, dynamic -->
             <!-- "title, (year)", "synopsis", "button: want something else?" -->
             <div id="movie-choice" class="w3-center hidden">
-                <h2>Today's movie is...</h2>
+                <h2 id="movie-choice-title">Today's movie is...</h2>
                 <!-- <p class="w3-large"></p> -->
               <br>
 
               <div id="selected-movie-info" class="w3-row">
                 <div class="w3-third w3-container">
-                  <iframe id="selected-trailer"></iframe>
+                  <iframe id="selected-trailer" width="560" height="315" src="" 
+                  title="YouTube video player" frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowfullscreen></iframe>
                 </div>
 
                 <div class="w3-third w3-container">
@@ -90,7 +93,7 @@
                 <div class="w3-third w3-container">
                   <h3 id="selected-title-year">Title (Year)</h3>
                   <p id="selected-synopsis">Synopsis: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ab qui enim, aliquam alias a beatae, vero magni nulla blanditiis eum corrupti consequatur consectetur expedita ipsum! Eos delectus sit consectetur.</p>
-                  <button id="new-movie-btn">Mmm, not feeling this one...</button>  
+                  <button id="new-movie-btn" type="submit">Mmm, not feeling this one...</button>  
                 </div>
               </div>
             </div>
