@@ -94,10 +94,11 @@ function handleFormSubmit(event) {
   // I only call to the OMDb api because I need info from it to make the youtube api call more accurate
   movieAPIcall(movieOdbApiUrl);
 
-  document.querySelector("#generate-btn").addEventListener("click", () => {
-    window.scrollTo(0,document.body.scrollHeight);
-  });
 }
+
+document.querySelector("#generate-btn").addEventListener("click", () => {
+  window.scrollTo(0,document.body.scrollHeight);
+});
 
 // Basically the same as handleFormSubmit() but doesn't have 'event.preventDefault();' <-- breaks the program if left in
 function handleButtonClick() {
