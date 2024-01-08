@@ -1,7 +1,6 @@
 // API key and URL for OMDb Api
 var api_key = "&apikey=9c8e80a7";
 var base_url = "http://www.omdbapi.com/?t=";
-var movie_id = ""
 
 // API key and URL for Youtube
 var youtubeurl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&q='
@@ -58,7 +57,7 @@ function handleFormSubmit(event){
                 correctClass = true;
             }
         }
-        if(genre == 'comedy'|| randomGenre == 1){
+        if(genre == 'comedy' || randomGenre == 1){
             var comedyMoviePick = Math.floor(Math.random()*comedyMovies.length);
             chosenMovie = comedyMovies[comedyMoviePick][0];
             theClass = comedyMovies[comedyMoviePick][1];
@@ -66,7 +65,7 @@ function handleFormSubmit(event){
                 correctClass = true;
             }
         }
-        if(genre == 'drama'|| randomGenre == 2){
+        if(genre == 'drama' || randomGenre == 2){
             var dramaMoviePick = Math.floor(Math.random()*dramaMovies.length);
             chosenMovie = dramaMovies[dramaMoviePick][0];
             theClass = dramaMovies[dramaMoviePick][1];
@@ -74,7 +73,7 @@ function handleFormSubmit(event){
                 correctClass = true;
             }
         }
-        if(genre == 'fantasy'|| randomGenre == 3){
+        if(genre == 'fantasy' || randomGenre == 3){
             var fantasyMoviePick = Math.floor(Math.random()*fantasyMovies.length);
             chosenMovie = fantasyMovies[fantasyMoviePick][0];
             theClass = fantasyMovies[fantasyMoviePick][1];
@@ -113,19 +112,19 @@ function handleButtonClick(){
             theClass = adventureMovies[actionMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                console.log(chosenMovie +' and the classification '+ theClass);
+                console.log(chosenMovie + ' and the classification ' + theClass);
             }
-            // console.log(chosenMovie +' and the classification '+ theClass);
+            // console.log(chosenMovie + ' and the classification ' + theClass);
         }
-        if(genre == 'comedy'|| randomGenre == 1){
+        if(genre == 'comedy' || randomGenre == 1){
             var comedyMoviePick = Math.floor(Math.random()*comedyMovies.length);
             chosenMovie = comedyMovies[comedyMoviePick][0];
             theClass = comedyMovies[comedyMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                console.log(chosenMovie +' and the classification '+ theClass);
+                console.log(chosenMovie + ' and the classification ' + theClass);
             }
-            // console.log(chosenMovie +' and the classification '+ theClass);
+            // console.log(chosenMovie + ' and the classification ' + theClass);
         }
         if(genre == 'drama'|| randomGenre == 2){
             var dramaMoviePick = Math.floor(Math.random()*dramaMovies.length);
@@ -133,7 +132,7 @@ function handleButtonClick(){
             theClass = dramaMovies[dramaMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                console.log(chosenMovie +' and the classification '+ theClass);
+                console.log(chosenMovie + ' and the classification ' + theClass);
             }
             // console.log(chosenMovie +' and the classification '+ theClass);
         }
@@ -143,7 +142,7 @@ function handleButtonClick(){
             theClass = fantasyMovies[fantasyMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                console.log(chosenMovie +' and the classification '+ theClass);
+                console.log(chosenMovie + ' and the classification ' + theClass);
             }
         }
     }while(correctClass == false);
@@ -208,7 +207,7 @@ function youtubeAPIcall(movieYoutubeApiUrl){
         // console.log(trailerURL);
 
         // sets the src of the <iframe> to the trailer url and embeds it into the html
-       $('#selected-trailer').attr('src',trailerURL);
+       $('#selected-trailer').attr('src', trailerURL);
 
     }).fail(function(fail){
         if(fail.status !== 200){
