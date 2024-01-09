@@ -97,11 +97,19 @@ button:hover {
 
 /* dynamic interactions */
 
+.hidden {
+    display: none;
+}
+
 @media (max-width: 1100px){
     #selected-movie-info {
         display: flex;
         flex-direction: column;
         margin-top: 35px;
+    }
+
+    #selected-trailer {
+        width: 100%;
     }
 }
 @media (max-width: 1200px) and (min-width: 1100px) {
