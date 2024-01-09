@@ -29,6 +29,7 @@ header {
 #header-h1 {
     /* font-family: 'Old Standard TT', serif; */
     margin-top: 50px;
+    color: white;
 }
 
 #h2-form {
@@ -88,3 +89,11 @@ button:hover {
 }
 
 /* dynamic interactions */
+
+@media (max-width: 1200px){
+    .column-buttons {
+        display: flex;
+        flex-direction: column;
+        margin-top: 35px;
+    }
+}
