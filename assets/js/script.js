@@ -222,8 +222,8 @@ function movieAPIcall(movieOdbApiUrl){
             // console.log(response); 
             
             // sets the text of the page to display the title, year, and synopsis.
-            $('#movie-choice-title').text(response.Title);
-            $('#selected-title-year').text('Release date: '+response.Year)
+            // $('#movie-choice-title').text(response.Title);
+            $('#selected-title-year').text(response.Title + ' ('+response.Year +')')
             $('#selected-synopsis').text(response.Plot);
             
             // I grab the year the movie was made from the JSON to create a more accurate search for the trailer on youtube
