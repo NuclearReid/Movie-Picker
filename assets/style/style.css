@@ -46,6 +46,15 @@ form {
     /* opacity: 80%; */
 }
 
+.moviepic {
+    height: 165px;
+    margin: 0;
+    position: relative;
+    float: right;
+    margin-top: 48px;
+    margin-right: 10px;
+}
+
 label {
     display: block;
     margin-bottom: 10px;
