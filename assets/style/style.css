@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 /* styling */
 body {
     margin: 0;
@@ -8,16 +12,12 @@ body {
     color: #fff;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-.container {
+#top {
     background: linear-gradient(to bottom right, #000000, #666161);
-    margin: 0;
+    /* margin: 0;
     /* figure out how to get more padding just on the sides of the top container and more centred */
     /* both columns should expand with one another, not just the form */
-    height: 100vh; 
+    height: 100vh;  
 }
 
 header {
@@ -26,34 +26,24 @@ header {
     text-align: center;
 }
 
-/* main {
-    padding: 20px;
-} */
-
-/* decide font sizes */
-/* h1,
-h2,
-h3 {
-} */
+#header-h1 {
+    /* font-family: 'Old Standard TT', serif; */
+    margin-top: 50px;
+}
 
 #h2-form {
     color: #4f8998;
 }
 
-/* #header-h1 {
-    font-family: 'Old Standard TT', serif;} */
-
-/* #header-p {
-    font-family: 'Montserrat', sans-serif;
-} */
-
 form {
-    max-width: 600px;
+    /* max-width: 600px; */
     margin: auto;
+    margin-top: 50px;
     background-color: #222;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /* opacity: 80%; */
 }
 
 label {
@@ -89,14 +79,8 @@ button:hover {
     background-color: #000000;
 }
 
-/* footer {
+#movie-choice-title {
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #333;
-} */
-
+}
 
 /* dynamic interactions */
