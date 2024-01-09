@@ -19,7 +19,7 @@ var fullMovieUrl;
 
 // variables used when randomly selecting a movie
 var movieOdbApiUrl;
-var chosenMovie;
+var chosenMovie = 'null';
 var correctClass = false;
 var theClass;
 
@@ -50,6 +50,7 @@ function handleFormSubmit(event){
     if($('#new-movies').val() != 'new-movie'){
         chosenMovie = $('#saved-movies').val();
     }
+    
     if($('#saved-movies').val() == 'new-movie'){
     // This will be running until correctClass becomes true
         do{
@@ -121,6 +122,8 @@ function handleFormSubmit(event){
     // I only call to the OMDb api because I need info from it to make the youtube api call more accurate
     movieAPIcall(movieOdbApiUrl);
 }
+// picks a movie within their criteria when they click on the form
+$('#selectionForm').on('submit', handleFormSubmit);
 
 // Basically the same as handleFormSubmit() but doesn't have 'event.preventDefault();' <-- breaks the program if left in
 function handleButtonClick(){
@@ -189,28 +192,32 @@ function handleButtonClick(){
     movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey;
     movieAPIcall(movieOdbApiUrl);    
 }
-// picks a movie within their criteria when they click on the form
-$('#selectionForm').on('submit', handleFormSubmit);
-
 // runs the program again if they click on the 'mmmm not feeling it' button
 $('#new-movie-btn').on('click', handleButtonClick);
 
 function storeMovieBtn(){
-    var savedMovie = $('#saved-movies');
-    var savedMovieOpt = $('<option>');
-    savedMovieOpt.attr('value', chosenMovie);
-    savedMovieOpt.text(chosenMovie);
-    savedMovie.append(savedMovieOpt);
-    
-    var storedMovies = JSON.parse(localStorage.getItem('storedMovies'))|| [];
-    storedMovies.push(chosenMovie);
-    localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
+    if(chosenMovie != 'null'){
+        var savedMovie = $('#saved-movies');
+        var savedMovieOpt = $('<option>');
+        savedMovieOpt.attr('value', chosenMovie);
+        savedMovieOpt.text(chosenMovie);
+            savedMovie.append(savedMovieOpt);
+            
+        
+        var storedMovies = JSON.parse(localStorage.getItem('storedMovies'))|| [];
+        storedMovies.push(chosenMovie);
+        
+            localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
+    }
 }
+
+$('#store-movie').on('click', storeMovieBtn);
+
 document.querySelector("#generate-btn").addEventListener("click", () => {
     window.scrollTo(0,document.body.scrollHeight);
   });
 
-$('#store-movie').on('click', storeMovieBtn);
+
 
 // The OMDb Api call function
 function movieAPIcall(movieOdbApiUrl){
