@@ -5,7 +5,9 @@ var base_url = "http://www.omdbapi.com/?t=";
 // API key and URL for Youtube
 var youtubeurl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&q='
 var youtubeSearch = '';
-var youtubeKey = '&key=AIzaSyCvhXEbyltDGuCtrFOaI6nykv5vIV5mvm4'
+var youtubeKey = '&key=AIzaSyCvhXEbyltDGuCtrFOaI6nykv5vIV5mvm4';
+var youtubeKey2 = '&key=AIzaSyDW44gDTh3prpr7UOb9ccppmyNIVmr-rH8';
+var youtubeKey3 = '&key=AIzaSyCQ3uXWHEAcfDKiLcK3JZW8iZL4BLkxsdo';
 var movieYoutubeApiUrl;
 
 // this url is needed so we can embed the youtube video into the website
@@ -21,6 +23,19 @@ var chosenMovie;
 var correctClass = false;
 var theClass;
 
+$(document).ready(function(){
+    var storedMovies = JSON.parse(localStorage.getItem('storedMovies'));
+
+    for (var i=0; i< storedMovies.length; i++){
+        var savedMovie = $('#saved-movies');
+        var savedMovieOpt = $('<option>');
+        savedMovieOpt.attr('value', chosenMovie);
+        savedMovieOpt.text(storedMovies[i]);
+        savedMovie.append(savedMovieOpt);
+    }
+})
+
+
 // the function used to get the movie based off the user's selections
 function handleFormSubmit(event){
     event.preventDefault();
@@ -32,70 +47,73 @@ function handleFormSubmit(event){
     // This will only be used if the user selects 'Any' for the genre
         // It's set to -1 because -1 is not checked in any of the if statements and i still wanted it declared before starting the do while statement
     var randomGenre = -1;
-
+    if($('#new-movies').val() != 'new-movie'){
+        chosenMovie = $('#saved-movies').val();
+    }
+    if($('#saved-movies').val() == 'new-movie'){
     // This will be running until correctClass becomes true
-    do{
-        // I have an if statment for each genre. If the user selects 'any' then I run a random number generator that'll pick one of those if statements at random
-        if(genre == 'any-genre'){
-            randomGenre = Math.floor(Math.random()*5);
-        }
-        // Each of these if statements essentially work the same, looks to see if the user selected 'action' or if randomGenre is 0
-            // the randomGenre is only used if the user selected 'any'
-        if(genre == 'action' || randomGenre == 0){
-            // selects a random spot from the action movie array
-            var actionMoviePick = Math.floor(Math.random()*adventureMovies.length);
-            // gets the movie title from that random spot (this is what'll be sent to the OMDb api)
-            chosenMovie = adventureMovies[actionMoviePick][0];
-            
-            // gets the classification from that random spot
-            theClass = adventureMovies[actionMoviePick][1];
-
-            // checks if the classification of the movie is the same as the users selected classification (or if they clicked any classification)
-            if(theClass == rating || rating == 'any-classification'){
-                // changes correctClass to true and this will end the do while loop
-                correctClass = true;
+        do{
+            // I have an if statment for each genre. If the user selects 'any' then I run a random number generator that'll pick one of those if statements at random
+            if(genre == 'any-genre'){
+                randomGenre = Math.floor(Math.random()*5);
             }
-        }
-        if(genre == 'comedy' || randomGenre == 1){
-            var comedyMoviePick = Math.floor(Math.random()*comedyMovies.length);
-            chosenMovie = comedyMovies[comedyMoviePick][0];
-            theClass = comedyMovies[comedyMoviePick][1];
-            if(theClass == rating || rating == 'any-classification'){
-                correctClass = true;
-            }
-        }
-        if(genre == 'drama' || randomGenre == 2){
-            var dramaMoviePick = Math.floor(Math.random()*dramaMovies.length);
-            chosenMovie = dramaMovies[dramaMoviePick][0];
-            theClass = dramaMovies[dramaMoviePick][1];
-            if(theClass == rating || rating == 'any-classification'){
-                correctClass = true;
-            }
-        }
-        if(genre == 'fantasy' || randomGenre == 3){
-            var fantasyMoviePick = Math.floor(Math.random()*fantasyMovies.length);
-            chosenMovie = fantasyMovies[fantasyMoviePick][0];
-            theClass = fantasyMovies[fantasyMoviePick][1];
-            if(theClass == rating || rating == 'any-classification'){
-                correctClass = true;
-            }
-        }
+            // Each of these if statements essentially work the same, looks to see if the user selected 'action' or if randomGenre is 0
+                // the randomGenre is only used if the user selected 'any'
+            if(genre == 'action' || randomGenre == 0){
+                // selects a random spot from the action movie array
+                var actionMoviePick = Math.floor(Math.random()*adventureMovies.length);
+                // gets the movie title from that random spot (this is what'll be sent to the OMDb api)
+                chosenMovie = adventureMovies[actionMoviePick][0];
+                
+                // gets the classification from that random spot
+                theClass = adventureMovies[actionMoviePick][1];
 
-        if(genre == 'horror'|| randomGenre == 4){
-            console.log('in horror ' + genre);
-            var horrorMoviePick = Math.floor(Math.random()*horrorMovies.length);
-            chosenMovie = horrorMovies[horrorMoviePick][0];
-            theClass = horrorMovies[horrorMoviePick][1];
-            if(theClass == rating || rating == 'any-classification'){
-                correctClass = true;
-                console.log(chosenMovie +' and the classification '+ theClass);
+                // checks if the classification of the movie is the same as the users selected classification (or if they clicked any classification)
+                if(theClass == rating || rating == 'any-classification'){
+                    // changes correctClass to true and this will end the do while loop
+                    correctClass = true;
+                }
             }
-        }
+            if(genre == 'comedy' || randomGenre == 1){
+                var comedyMoviePick = Math.floor(Math.random()*comedyMovies.length);
+                chosenMovie = comedyMovies[comedyMoviePick][0];
+                theClass = comedyMovies[comedyMoviePick][1];
+                if(theClass == rating || rating == 'any-classification'){
+                    correctClass = true;
+                }
+            }
+            if(genre == 'drama' || randomGenre == 2){
+                var dramaMoviePick = Math.floor(Math.random()*dramaMovies.length);
+                chosenMovie = dramaMovies[dramaMoviePick][0];
+                theClass = dramaMovies[dramaMoviePick][1];
+                if(theClass == rating || rating == 'any-classification'){
+                    correctClass = true;
+                }
+            }
+            if(genre == 'fantasy' || randomGenre == 3){
+                var fantasyMoviePick = Math.floor(Math.random()*fantasyMovies.length);
+                chosenMovie = fantasyMovies[fantasyMoviePick][0];
+                theClass = fantasyMovies[fantasyMoviePick][1];
+                if(theClass == rating || rating == 'any-classification'){
+                    correctClass = true;
+                }
+            }
 
-        // if the selected classification and movie classification are not the same, correctClass remains false and the loop runs again
-    }while(correctClass == false);
+            if(genre == 'horror'|| randomGenre == 4){
+                console.log('in horror ' + genre);
+                var horrorMoviePick = Math.floor(Math.random()*horrorMovies.length);
+                chosenMovie = horrorMovies[horrorMoviePick][0];
+                theClass = horrorMovies[horrorMoviePick][1];
+                if(theClass == rating || rating == 'any-classification'){
+                    correctClass = true;
+                    console.log(chosenMovie +' and the classification '+ theClass);
+                }
+            }
 
-
+            // if the selected classification and movie classification are not the same, correctClass remains false and the loop runs again
+        }while(correctClass == false);
+    }
+    
     // This uses the movie picked from the array to create the url for the OMDb 
         // I'll also send this url to the my OMDb api function
     movieOdbApiUrl = base_url + chosenMovie + api_key;
@@ -103,10 +121,6 @@ function handleFormSubmit(event){
     // I only call to the OMDb api because I need info from it to make the youtube api call more accurate
     movieAPIcall(movieOdbApiUrl);
 }
-
-document.querySelector("#generate-btn").addEventListener("click", () => {
-    window.scrollTo(0,document.body.scrollHeight);
-});
 
 // Basically the same as handleFormSubmit() but doesn't have 'event.preventDefault();' <-- breaks the program if left in
 function handleButtonClick(){
@@ -178,12 +192,22 @@ function handleButtonClick(){
 // picks a movie within their criteria when they click on the form
 $('#selectionForm').on('submit', handleFormSubmit);
 
-document.querySelector("#generate-btn").addEventListener("click", () => {
-    window.scrollTo(0,document.body.scrollHeight);
-  });
 // runs the program again if they click on the 'mmmm not feeling it' button
 $('#new-movie-btn').on('click', handleButtonClick);
 
+function storeMovieBtn(){
+    var savedMovie = $('#saved-movies');
+    var savedMovieOpt = $('<option>');
+    savedMovieOpt.attr('value', chosenMovie);
+    savedMovieOpt.text(chosenMovie);
+    savedMovie.append(savedMovieOpt);
+    
+    var storedMovies = JSON.parse(localStorage.getItem('storedMovies'))|| [];
+    storedMovies.push(chosenMovie);
+    localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
+}
+
+$('#store-movie').on('click', storeMovieBtn);
 
 // The OMDb Api call function
 function movieAPIcall(movieOdbApiUrl){
@@ -203,7 +227,7 @@ function movieAPIcall(movieOdbApiUrl){
                 // Basically by putting in the year I know I won't be grabbing a re-make 
             youtubeSearch = chosenMovie + ' (' + response.Year + ') '+ 'trailer';
             // creates the url that i'll be sending to the Youtube Api
-             movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey;
+             movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey2;
             // console.log(youtubeSearch);
             // calls to the youtube api
              youtubeAPIcall(movieYoutubeApiUrl);
@@ -239,7 +263,7 @@ function youtubeAPIcall(movieYoutubeApiUrl){
         if(fail.status !== 200){
 
             // this'll have to be changed from being an 'alert'
-            alert('Could not get the info for that movie');
+            // alert('Could not get the info for that movie');
             return;
         }
     });
