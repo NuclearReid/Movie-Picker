@@ -97,6 +97,7 @@ button:hover {
 
 /* dynamic interactions */
 
+/* used to hide generated movie prior to form being submitted */
 .hidden {
     display: none;
 }
@@ -112,10 +113,24 @@ button:hover {
         width: 100%;
     }
 }
-@media (max-width: 1200px) and (min-width: 1100px) {
+@media (max-width: 1200px) and (min-width: 1101px) {
     .column-buttons {
         display: flex;
         flex-direction: column;
         margin-top: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .column-buttons {
+        display: block;
+    }
+
+    form {
+        margin-top: 10px;
+    }
+
+    #header-h1 {
+        margin-top: 10px;
     }
 }
