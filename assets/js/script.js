@@ -128,6 +128,7 @@ function handleButtonClick(){
     var genre = $('#genre').val();
     var rating = $('#rating').val();
     var randomGenre = -1;
+
     // console.log(genre + ' ' + rating);
     do{
         if(genre == 'any-genre'){
@@ -173,6 +174,7 @@ function handleButtonClick(){
                 console.log(chosenMovie + ' and the classification ' + theClass);
             }
         }
+
         if(genre == 'horror'|| randomGenre == 4){
             var horrorMoviePick = Math.floor(Math.random()*horrorMovies.length);
             chosenMovie = horrorMovies[horrorMoviePick][0];
@@ -182,7 +184,8 @@ function handleButtonClick(){
                 console.log(chosenMovie +' and the classification '+ theClass);
             }
         }
-    }while(correctClass == false);
+
+    } while(correctClass == false);
     //building the api url
     movieOdbApiUrl = base_url + chosenMovie + api_key;
     youtubeSearch = chosenMovie + ' trailer';
@@ -206,8 +209,27 @@ function storeMovieBtn(){
     storedMovies.push(chosenMovie);
     localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
 }
+
+// Show/hide scroll-to-top button based on scroll position
+document.addEventListener('scroll', function () {
+    var scrollButton = document.getElementById('scroll-up');
+    if (window.scrollY > 200) {
+        scrollButton.classList.remove('is-hidden');
+        scrollButton.classList.add('is-shown');
+    } else {
+        scrollButton.classList.add('is-hidden');
+        scrollButton.classList.remove('is-shown');
+    }
+});
+
 document.querySelector("#generate-btn").addEventListener("click", () => {
     window.scrollTo(0,document.body.scrollHeight);
+  });
+
+$('#store-movie').on('click', storeMovieBtn);
+
+document.querySelector("#scroll-up").addEventListener("click", () => {
+    window.scrollTo(0,0);
   });
 
 $('#store-movie').on('click', storeMovieBtn);
