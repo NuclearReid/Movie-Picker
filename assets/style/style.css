@@ -95,6 +95,11 @@ button:hover {
     text-align: center;
 }
 
+/* .responsive-gif {
+    max-width: 100%;
+    height: auto;
+} */
+
 /* dynamic interactions */
 
 /* used to hide generated movie prior to form being submitted */
@@ -107,11 +112,23 @@ button:hover {
   width: 100%;
 } */
 
+@media (min-width: 1101px) {
+    .section {
+        height: auto;
+    }
+
+    #top {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+  
+}
+
 @media (max-width: 1200px) and (min-width: 1101px) {
     .column-buttons {
         display: flex;
         flex-direction: column;
-        margin-top: 35px;
+        margin-top: 20px;
     }
 
     #store-movie {
@@ -142,15 +159,21 @@ button:hover {
 @media (max-width: 1101px) and (min-width: 769px) {
 
     #selected-movie-info {
+        align-items: center;
         width: 100%;
     }
 }
 
 @media (max-width: 768px) {
     .column-buttons {
-        display: block;
-        /* align center not working */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
+
+
 
     form {
         margin-top: 10px;
