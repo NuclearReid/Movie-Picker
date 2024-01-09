@@ -46,6 +46,10 @@ form {
     /* opacity: 80%; */
 }
 
+.section {
+    height: 100vh;
+}
+
 label {
     display: block;
     margin-bottom: 10px;
