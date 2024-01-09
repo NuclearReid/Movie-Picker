@@ -29,11 +29,18 @@ header {
 #header-h1 {
     /* font-family: 'Old Standard TT', serif; */
     margin-top: 50px;
+}
+
+.title {
+    color: white;
+}
+
+.subtitle {
     color: white;
 }
 
 #h2-form {
-    color: #4f8998;
+    color: #4f8998 !important;
 }
 
 form {
@@ -43,7 +50,7 @@ form {
     background-color: #222;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
     /* opacity: 80%; */
 }
 
