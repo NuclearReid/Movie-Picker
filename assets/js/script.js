@@ -210,6 +210,8 @@ function storeMovieBtn(){
     localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
 }
 
+$('#store-movie').on('click', storeMovieBtn);
+
 // Show/hide scroll-to-top button based on scroll position
 document.addEventListener('scroll', function () {
     var scrollButton = document.getElementById('scroll-up');
@@ -226,13 +228,11 @@ document.querySelector("#generate-btn").addEventListener("click", () => {
     window.scrollTo(0,document.body.scrollHeight);
   });
 
-$('#store-movie').on('click', storeMovieBtn);
+
 
 document.querySelector("#scroll-up").addEventListener("click", () => {
     window.scrollTo(0,0);
   });
-
-$('#store-movie').on('click', storeMovieBtn);
 
 // The OMDb Api call function
 function movieAPIcall(movieOdbApiUrl){
