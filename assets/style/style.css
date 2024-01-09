@@ -102,6 +102,27 @@ button:hover {
     display: none;
 }
 
+/* .youtube-video {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+} */
+
+@media (max-width: 1200px) and (min-width: 1101px) {
+    .column-buttons {
+        display: flex;
+        flex-direction: column;
+        margin-top: 35px;
+    }
+
+    #store-movie {
+        margin-top: 0px;
+    }
+
+    #selected-trailer {
+        width: 100%;
+    }
+}
+
 @media (max-width: 1100px){
     #selected-movie-info {
         display: flex;
@@ -112,18 +133,23 @@ button:hover {
     #selected-trailer {
         width: 100%;
     }
+
+    #selected-synopsis {
+        margin-bottom: 50px;
+    }
 }
-@media (max-width: 1200px) and (min-width: 1101px) {
-    .column-buttons {
-        display: flex;
-        flex-direction: column;
-        margin-top: 35px;
+
+@media (max-width: 1101px) and (min-width: 769px) {
+
+    #selected-movie-info {
+        width: 100%;
     }
 }
 
 @media (max-width: 768px) {
     .column-buttons {
         display: block;
+        /* align center not working */
     }
 
     form {
@@ -134,3 +160,4 @@ button:hover {
         margin-top: 10px;
     }
 }
+
