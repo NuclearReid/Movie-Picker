@@ -206,6 +206,9 @@ function storeMovieBtn(){
     storedMovies.push(chosenMovie);
     localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
 }
+document.querySelector("#generate-btn").addEventListener("click", () => {
+    window.scrollTo(0,document.body.scrollHeight);
+  });
 
 $('#store-movie').on('click', storeMovieBtn);
 
