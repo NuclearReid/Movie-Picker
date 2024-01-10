@@ -19,7 +19,7 @@ body {
 }
 
 #top {
-    background: linear-gradient(to bottom right, #000000, #666161);
+    background: linear-gradient(to bottom right, #000000, #8a8585);
     height: 100vh;  
 }
 
@@ -71,9 +71,9 @@ form {
     border-radius: 10px;
 }
 
-/* #saved-movies {
-
-} */
+.saved-video {
+    width: 100%;
+}
 
 .moviepic {
     height: 165px;
@@ -145,7 +145,7 @@ button:hover {
 
 /* widescreen */
 @media (min-width: 1216px) {
-  .youtube-video {
+  #selected-trailer {
     width: 750px;
     height: 441px;
   }
