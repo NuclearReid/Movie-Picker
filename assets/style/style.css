@@ -40,6 +40,11 @@ header {
     color: white;
 }
 
+p {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
 #h2-form {
     color: #4f8998 !important;
 }
@@ -122,13 +127,12 @@ button:hover {
   width: 100%;
 } */
 
-
-@media (min-width: 1200px) {
+/* widescreen */
+@media (min-width: 1216px) {
   .youtube-video {
     width: 750px;
     height: 441px;
   }
-
 }
 
 @media (min-width: 1101px) {
@@ -170,7 +174,7 @@ button:hover {
     }
 
     #selected-synopsis {
-        margin-bottom: 50px;
+        margin-bottom: 30px;
     }
 }
 
