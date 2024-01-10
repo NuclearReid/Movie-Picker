@@ -65,6 +65,16 @@ form {
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
 }
 
+.modal-content {
+    background-color: #4f8998;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* #saved-movies {
+
+} */
+
 .moviepic {
     height: 165px;
     margin: 0;
