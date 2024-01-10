@@ -1,21 +1,21 @@
 function openModal() {
-    document.getElementById('modal-saved-movies').classList.add('is-active');
+    $('#modal-saved-movies').addClass('is-active');
 }
 
 // Function to close the modal
 function closeModal() {
-    document.getElementById('modal-saved-movies').classList.remove('is-active');
+    $('#modal-saved-movies').removeClass('is-active');
 }
 
 // When button is clicked modal closes
-document.getElementById('modal-saved-movies').addEventListener('click', function () {
+$('#modal-saved-movies').click(function () {
     closeModal();
 });
 
 // Add event listener to the form select
-document.getElementById('saved-movies').addEventListener('change', function () {
+$('#saved-movies').change(function () {
     // Check the selected option value
-    var selectedOption = this.value;
+    var selectedOption = $(this).val();
 
     // If a specific option is selected, open the modal
     // not sure how to select anything and its generated?
