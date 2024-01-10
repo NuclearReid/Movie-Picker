@@ -5,9 +5,10 @@ var base_url = "http://www.omdbapi.com/?t=";
 // API key and URL for Youtube
 var youtubeurl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&q='
 var youtubeSearch = '';
-var youtubeKey = '&key=AIzaSyCvhXEbyltDGuCtrFOaI6nykv5vIV5mvm4';
-var youtubeKey2 = '&key=AIzaSyDW44gDTh3prpr7UOb9ccppmyNIVmr-rH8';
-var youtubeKey3 = '&key=AIzaSyCQ3uXWHEAcfDKiLcK3JZW8iZL4BLkxsdo';
+// var youtubeKeyFail = '&key=Fail';
+var youtubeKey0 = '&key=AIzaSyCvhXEbyltDGuCtrFOaI6nykv5vIV5mvm4';
+var youtubeKey1 = '&key=AIzaSyDW44gDTh3prpr7UOb9ccppmyNIVmr-rH8';
+var youtubeKey2 = '&key=AIzaSyCQ3uXWHEAcfDKiLcK3JZW8iZL4BLkxsdo';
 var movieYoutubeApiUrl;
 
 // this url is needed so we can embed the youtube video into the website
@@ -19,7 +20,7 @@ var fullMovieUrl;
 
 // variables used when randomly selecting a movie
 var movieOdbApiUrl;
-var chosenMovie;
+var chosenMovie = 'null';
 var correctClass = false;
 var theClass;
 
@@ -35,7 +36,6 @@ $(document).ready(function(){
     }
 })
 
-
 // the function used to get the movie based off the user's selections
 function handleFormSubmit(event){
     event.preventDefault();
@@ -50,6 +50,7 @@ function handleFormSubmit(event){
     if($('#new-movies').val() != 'new-movie'){
         chosenMovie = $('#saved-movies').val();
     }
+    
     if($('#saved-movies').val() == 'new-movie'){
     // This will be running until correctClass becomes true
         do{
@@ -121,6 +122,8 @@ function handleFormSubmit(event){
     // I only call to the OMDb api because I need info from it to make the youtube api call more accurate
     movieAPIcall(movieOdbApiUrl);
 }
+// picks a movie within their criteria when they click on the form
+$('#selectionForm').on('submit', handleFormSubmit);
 
 // Basically the same as handleFormSubmit() but doesn't have 'event.preventDefault();' <-- breaks the program if left in
 function handleButtonClick(){
@@ -186,34 +189,35 @@ function handleButtonClick(){
     //building the api url
     movieOdbApiUrl = base_url + chosenMovie + api_key;
     youtubeSearch = chosenMovie + ' trailer';
-    movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey;
+    movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey0;
     movieAPIcall(movieOdbApiUrl);    
 }
-// picks a movie within their criteria when they click on the form
-$('#selectionForm').on('submit', handleFormSubmit);
-
 // runs the program again if they click on the 'mmmm not feeling it' button
 $('#new-movie-btn').on('click', handleButtonClick);
 
 function storeMovieBtn(){
-    var savedMovie = $('#saved-movies');
-    var savedMovieOpt = $('<option>');
-    savedMovieOpt.attr('value', chosenMovie);
-    savedMovieOpt.text(chosenMovie);
-    savedMovie.append(savedMovieOpt);
-    
-    var storedMovies = JSON.parse(localStorage.getItem('storedMovies'))|| [];
-    storedMovies.push(chosenMovie);
-    localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
+    if(chosenMovie != 'null'){
+        var savedMovie = $('#saved-movies');
+        var savedMovieOpt = $('<option>');
+        savedMovieOpt.attr('value', chosenMovie);
+        savedMovieOpt.text(chosenMovie);
+            savedMovie.append(savedMovieOpt);
+            
+        
+        var storedMovies = JSON.parse(localStorage.getItem('storedMovies'))|| [];
+        storedMovies.push(chosenMovie);
+        
+            localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
+    }
 }
+$('#store-movie').on('click', storeMovieBtn);
+
 document.querySelector("#generate-btn").addEventListener("click", () => {
       // removes class hidden from the selected movie upon clicked "generate movie"
     $('#movie-choice').removeClass('hidden');
       //scrolls to botto,
     window.scrollTo(0,document.body.scrollHeight);
   });
-
-$('#store-movie').on('click', storeMovieBtn);
 
 // The OMDb Api call function
 function movieAPIcall(movieOdbApiUrl){
@@ -233,13 +237,13 @@ function movieAPIcall(movieOdbApiUrl){
                 // Basically by putting in the year I know I won't be grabbing a re-make 
             youtubeSearch = chosenMovie + ' (' + response.Year + ') '+ 'trailer';
             // creates the url that i'll be sending to the Youtube Api
-             movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey2;
+             movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey0;
             // console.log(youtubeSearch);
             // calls to the youtube api
              youtubeAPIcall(movieYoutubeApiUrl);
     }).fail(function(fail){
         if(fail.status !== 200){
-
+            
             // this'll have to be changed from being an 'alert'
             alert('Could not get the info for that movie');
             return;
@@ -248,11 +252,15 @@ function movieAPIcall(movieOdbApiUrl){
 }
 
 // calls to the youtube api with the url I created in the OMDb api function
+var failCounter =0;
+var youtubeKeys = [youtubeKey0, youtubeKey1 ,youtubeKey2]
+
 function youtubeAPIcall(movieYoutubeApiUrl){
     $.ajax({
         url: movieYoutubeApiUrl,
         method: 'GET'
     }).then(function(response){
+        // failCounter = 0;
         // console.log(response);
         // gets the video id from the JSON 
         var movieID = response.items[0].id.videoId;
@@ -267,7 +275,9 @@ function youtubeAPIcall(movieYoutubeApiUrl){
 
     }).fail(function(fail){
         if(fail.status !== 200){
-
+            failCounter = (failCounter + 1) % youtubeKeys.length;
+            movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKeys[failCounter];
+                youtubeAPIcall(movieYoutubeApiUrl);
             // this'll have to be changed from being an 'alert'
             // alert('Could not get the info for that movie');
             return;

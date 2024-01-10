@@ -20,6 +20,10 @@ body {
     height: 100vh;  
 }
 
+.section {
+    height: 100vh;
+}
+
 header {
     background-color: #333;
     padding: 20px;
@@ -52,6 +56,15 @@ form {
     border-radius: 10px;
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
     /* opacity: 80%; */
+}
+
+.moviepic {
+    height: 165px;
+    margin: 0;
+    position: relative;
+    float: right;
+    margin-top: 48px;
+    margin-right: 10px;
 }
 
 .section {
