@@ -27,19 +27,19 @@
               <p><i class="fa-solid fa-rotate-right" style="color: #ffffff;"></i></i> If you don't like the trailer, but still want the same preference, select "mmm, not feeling this one..."</p>
               <p><i class="fa-solid fa-angles-up" style="color: #ffffff;"></i> Something completely new? Hit this button in the bottom right corner to go back to the top</p>
               <p><i class="fa-solid fa-arrow-down" style="color: #ffffff;"></i> Changed your mind? Your saved movies can be accessed below</p>
-              <form id="saved-movies-list">
+              <!-- <form id="saved-movies-list">
                 <label for="saved-movies" class="">Saved Movies:</label>
                     <select id="saved-movies" name="saved-movies" required>
-                      <!-- can this be left empty? -->
+                      can this be left empty? -->
                       <!-- does it trigger anything else? need it to bring up modal -->
-                        <option value="new-movie">New Movie</option>
+                        <!-- <option value="new-movie">New Movie</option>
                     </select>
-              </form>
+              </form> -->
 
-              <div id="modal-saved-movies" class="modal">
+              <!-- <div id="modal-saved-movies" class="modal">
                 <div class="modal-background"></div>
                 <div class="modal-content">
-                  <!-- Saved movie elements -->
+                  Saved movie elements
 
                   <div class="is-clipped">
                     <h2 id="selected-title-year" class="subtitle has-text-centered has-text-weight-bold">Title (Year)</h3>
@@ -47,14 +47,14 @@
                     <div class="column is-two-thirds">
                       <iframe id="selected-trailer" class="youtube-video saved-video" width="560" height="315" src="" 
                       title="YouTube video player" frameborder="0" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                       allowfullscreen></iframe>
                     </div>
                   </div>
                 </div>
-                <!-- maybe have no button and just click on screen -->
-                  <button id="close-button" class="modal-close is-large" aria-label="close"></button>
-              </div>
+                maybe have no button and just click on screen -->
+                  <!-- <button id="close-button" class="modal-close is-large" aria-label="close"></button>
+              </div> -->
 
               <!-- <iframe src="https://giphy.com/embed/AwJuJzp1pGrcfO51g6" width="480" height="480" frameBorder="0" class="giphy-embed responsive-gif is-fullwidth" allowFullScreen></iframe><p><a href="https://giphy.com/stickers/movie-film-cinema-AwJuJzp1pGrcfO51g6">via GIPHY</a></p> -->
             </div>
@@ -89,11 +89,11 @@
                         <option value="R 18+">R 18+</option>
                     </select>
 
-                    <!-- displays previously saved movies from local storage
+                    <!-- displays previously saved movies from local storage -->
                     <label for="saved-movies">Saved Movies:</label>
                     <select id="saved-movies" name="saved-movies" required>
                         <option value="new-movie">New Movie</option>
-                    </select> -->
+                    </select>
 
                     <button id="generate-btn" type="submit">Generate Movie</button>
                 </form> 
@@ -111,7 +111,7 @@
               <div class="column is-two-thirds">
                 <iframe id="selected-trailer" class="youtube-video" width="560" height="315" src="" 
                 title="YouTube video player" frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen></iframe>
               </div>
 
