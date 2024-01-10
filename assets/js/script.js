@@ -219,6 +219,13 @@ document.querySelector("#generate-btn").addEventListener("click", () => {
     window.scrollTo(0,document.body.scrollHeight);
   });
 
+// scrolls to bottom when the page gets cut off by the responsivity
+window.addEventListener('resize', function () {
+    if (window.innerWidth <= 1100) {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+});
+
 // The OMDb Api call function
 function movieAPIcall(movieOdbApiUrl){
     $.ajax({

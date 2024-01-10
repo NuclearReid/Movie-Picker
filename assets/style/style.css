@@ -14,9 +14,6 @@ body {
 
 #top {
     background: linear-gradient(to bottom right, #000000, #666161);
-    /* margin: 0;
-    /* figure out how to get more padding just on the sides of the top container and more centred */
-    /* both columns should expand with one another, not just the form */
     height: 100vh;  
 }
 
@@ -55,7 +52,6 @@ form {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
-    /* opacity: 80%; */
 }
 
 .moviepic {
@@ -114,18 +110,6 @@ button:hover {
 } */
 
 
-/* potential sidebar to display poster and title(year) of previously saved movies */
-/* instead of in dropdown, if we decide not to link them */
-
-
-
-
-
-
-
-
-
-
 /* dynamic interactions */
 
 /* used to hide generated movie prior to form being submitted */
@@ -138,6 +122,15 @@ button:hover {
   width: 100%;
 } */
 
+
+@media (min-width: 1200px) {
+  .youtube-video {
+    width: 750px;
+    height: 441px;
+  }
+
+}
+
 @media (min-width: 1101px) {
     .section {
         height: auto;
@@ -147,7 +140,6 @@ button:hover {
         margin-bottom: 0;
         padding-bottom: 0;
     }
-  
 }
 
 @media (max-width: 1200px) and (min-width: 1101px) {
@@ -198,8 +190,6 @@ button:hover {
         margin-top: 0px;
         margin-bottom: 0px;
     }
-
-
 
     form {
         margin-top: 10px;
