@@ -248,6 +248,18 @@ function movieAPIcall(movieOdbApiUrl){
     });
 }
 
+// Show/hide scroll-to-top button based on scroll position
+document.addEventListener('scroll', function () {
+    var scrollButton = document.getElementById('scroll-up');
+    if (window.scrollY > 200) {
+        scrollButton.classList.remove('is-hidden');
+        scrollButton.classList.add('is-shown');
+    } else {
+        scrollButton.classList.add('is-hidden');
+        scrollButton.classList.remove('is-shown');
+    }
+});
+
 // calls to the youtube api with the url I created in the OMDb api function
 var failCounter =0;
 var youtubeKeys = [youtubeKey0, youtubeKey1 ,youtubeKey2]
