@@ -23,6 +23,7 @@ body {
     /* background: linear-gradient(to bottom right, #000000, #8a8585); */
     height: fit-content;  
     padding-bottom: 40px;
+    margin-bottom: -10px;
 }
 
 /* .section {
@@ -55,6 +56,9 @@ p {
 
 #h2-form {
     color: #4f8998 !important;
+    position: relative;
+    top: 30px;
+    /* left: 20px; */
 }
 
 form {
@@ -67,11 +71,11 @@ form {
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+/* .modal-content {
     background-color: #4f8998;
     padding: 20px;
     border-radius: 10px;
-}
+} */
 
 .saved-video {
     width: 100%;
@@ -90,6 +94,11 @@ label {
     display: block;
     margin-bottom: 10px;
     font-size: 18px;
+}
+
+.genre-label {
+    position: relative;
+    top: 50px;
 }
 
 input, select {
