@@ -1,8 +1,9 @@
-# Movie Generator
+<h1 align="center">Movie Generator</h1>
 
 A brief description of what this project does and who it's for
 
 The following animation displays the applications functionality:
+
 ![GIF](./assets/images/website.gif)
 
 ## Table of Contents
@@ -78,13 +79,13 @@ THEN: ...
 Clone the project
 
 ```
-  git clone https://link-to-project
+  git clone https://github.com/NuclearReid/Movie-Picker.git
 ```
 
 Go to the project directory
 
 ```
-  cd my-project
+  cd movie-picker
 ```
 
 Install dependencies
