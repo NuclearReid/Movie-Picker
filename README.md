@@ -3,7 +3,7 @@
 A brief description of what this project does and who it's for
 
 The following animation displays the applications functionality:
-![The following animation displays the applications functionality:](./assets/images/website.gif.sb-84cc5589-RKTMIH)
+![GIF](./assets/images/website.gif)
 
 ## Table of Contents
 <!-- add in correct contents -->
