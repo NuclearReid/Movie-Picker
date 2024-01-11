@@ -65,13 +65,13 @@ function handleFormSubmit(event){
 
     if($('#new-movies').val() != 'new-movie'){
         chosenMovie = $('#saved-movies').val();
-        console.log('saved movie picked');
-        console.log(chosenMovie);
+        // console.log('saved movie picked');
+        // console.log(chosenMovie);
         savedMovieURL(chosenMovie);
     }
 
     if($('#saved-movies').val() == 'new-movie'){
-        console.log('in the getting a new movie if statement');
+        // console.log('in the getting a new movie if statement');
     // This will be running until correctClass becomes true
         do{
             // I have an if statment for each genre. If the user selects 'any' then I run a random number generator that'll pick one of those if statements at random
@@ -121,13 +121,13 @@ function handleFormSubmit(event){
             }
 
             if(genre == 'horror'|| randomGenre == 4){
-                console.log('in horror ' + genre);
+                // console.log('in horror ' + genre);
                 var horrorMoviePick = Math.floor(Math.random()*horrorMovies.length);
                 chosenMovie = horrorMovies[horrorMoviePick][0];
                 theClass = horrorMovies[horrorMoviePick][1];
                 if(theClass == rating || rating == 'any-classification'){
                     correctClass = true;
-                    console.log(chosenMovie +' and the classification '+ theClass);
+                    // console.log(chosenMovie +' and the classification '+ theClass);
                 }
             }
 
@@ -139,7 +139,7 @@ function handleFormSubmit(event){
 
     // This uses the movie picked from the array to create the url for the OMDb 
         // I'll also send this url to the my OMDb api function
-    console.log('going to the movieAPIcall');
+    // console.log('going to the movieAPIcall');
     movieAPIcall(movieOdbApiUrl);
     }
     
@@ -150,15 +150,15 @@ $('#selectionForm').on('submit', handleFormSubmit);
 
 function savedMovieURL(chosenMovie){
     var storedMovies = JSON.parse(localStorage.getItem('storedMovies')) || [];
-    console.log('getting to savedMovieURL');
-    console.log(chosenMovie);
+    // console.log('getting to savedMovieURL');
+    // console.log(chosenMovie);
         for(var i = 0; i < storedMovies.length; i++){
             if((storedMovies[i] == chosenMovie) &&(storedMovies.length !== 0)){
                 trailerURL = storedMovies[i+1];
-                console.log(trailerURL);
+                // console.log(trailerURL);
             }
         }
-        console.log('not using the youtube api');
+        // console.log('not using the youtube api');
         $('#selected-trailer').attr('src', trailerURL); 
         movieOdbApiUrl = base_url + chosenMovie + api_key;
         movieAPIcallnoYT(movieOdbApiUrl); 
@@ -182,7 +182,7 @@ function handleButtonClick(){
             theClass = adventureMovies[actionMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                console.log(chosenMovie + ' and the classification ' + theClass);
+                // console.log(chosenMovie + ' and the classification ' + theClass);
             }
             // console.log(chosenMovie + ' and the classification ' + theClass);
         }
@@ -192,7 +192,7 @@ function handleButtonClick(){
             theClass = comedyMovies[comedyMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                console.log(chosenMovie + ' and the classification ' + theClass);
+                // console.log(chosenMovie + ' and the classification ' + theClass);
             }
             // console.log(chosenMovie + ' and the classification ' + theClass);
         }
@@ -202,7 +202,7 @@ function handleButtonClick(){
             theClass = dramaMovies[dramaMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                console.log(chosenMovie + ' and the classification ' + theClass);
+                // console.log(chosenMovie + ' and the classification ' + theClass);
             }
             // console.log(chosenMovie +' and the classification '+ theClass);
         }
@@ -212,7 +212,7 @@ function handleButtonClick(){
             theClass = fantasyMovies[fantasyMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                console.log(chosenMovie + ' and the classification ' + theClass);
+                // console.log(chosenMovie + ' and the classification ' + theClass);
             }
         }
         if(genre == 'horror'|| randomGenre == 4){
@@ -221,7 +221,7 @@ function handleButtonClick(){
             theClass = horrorMovies[horrorMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                console.log(chosenMovie +' and the classification '+ theClass);
+                // console.log(chosenMovie +' and the classification '+ theClass);
             }
         }
     }while(correctClass == false);
