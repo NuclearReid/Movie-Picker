@@ -263,6 +263,10 @@ document.addEventListener('scroll', function () {
     }
 });
 
+document.querySelector("#scroll-up").addEventListener("click", () => {
+    window.scrollTo(0,0);
+});
+
 // calls to the youtube api with the url I created in the OMDb api function
 var failCounter =0;
 var youtubeKeys = [youtubeKey0, youtubeKey1 ,youtubeKey2]
