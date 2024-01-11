@@ -2,27 +2,33 @@ html {
     scroll-behavior: smooth;
 }
 
+::selection {
+    color: black;
+    background: #4f8998;
+}
+
+
 /* styling */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     /* consider Source Sans as new font-family */
-    background-color: #111;
+    background: linear-gradient(to bottom right, #000000, #8a8585);
+    height: 100vh;
     color: #fff;
 }
 
 #top {
-    background: linear-gradient(to bottom right, #000000, #666161);
-    /* margin: 0;
-    /* figure out how to get more padding just on the sides of the top container and more centred */
-    /* both columns should expand with one another, not just the form */
-    height: 100vh;  
+    /* background: linear-gradient(to bottom right, #000000, #8a8585); */
+    height: fit-content;  
+    padding-bottom: 40px;
+    margin-bottom: -10px;
 }
 
-.section {
+/* .section {
     height: 100vh;
-}
+} */
 
 header {
     background-color: #333;
@@ -35,8 +41,24 @@ header {
     margin-top: 50px;
 }
 
+.title {
+    color: white;
+}
+
+.subtitle {
+    color: white;
+}
+
+p {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
 #h2-form {
-    color: #4f8998;
+    color: #4f8998 !important;
+    position: relative;
+    top: 30px;
+    /* left: 20px; */
 }
 
 form {
@@ -46,8 +68,17 @@ form {
     background-color: #222;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    /* opacity: 80%; */
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* .modal-content {
+    background-color: #4f8998;
+    padding: 20px;
+    border-radius: 10px;
+} */
+
+.saved-video {
+    width: 100%;
 }
 
 .moviepic {
@@ -59,14 +90,15 @@ form {
     margin-right: 10px;
 }
 
-.section {
-    height: 100vh;
-}
-
 label {
     display: block;
     margin-bottom: 10px;
     font-size: 18px;
+}
+
+.genre-label {
+    position: relative;
+    top: 50px;
 }
 
 input, select {
@@ -96,8 +128,121 @@ button:hover {
     background-color: #000000;
 }
 
+#movie-choice {
+    background-color: #111;
+}
 #movie-choice-title {
     text-align: center;
 }
 
+.footer {
+    padding: 25px;
+    margin-top: auto;
+    margin-bottom: 0px;
+    background-color: #333;
+    text-align: center;
+}
+
+/* .responsive-gif {
+    max-width: 100%;
+    height: auto;
+} */
+
+
 /* dynamic interactions */
+
+/* used to hide generated movie prior to form being submitted */
+.hidden {
+    display: none;
+}
+
+/* .youtube-video {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+} */
+
+/* widescreen */
+@media (min-width: 1216px) {
+  #selected-trailer {
+    width: 750px;
+    height: 441px;
+  }
+}
+
+@media (min-width: 1101px) {
+    .section {
+        height: auto;
+    }
+
+    #top {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    form {
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 1101px) {
+    .column-buttons {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    #store-movie {
+        margin-top: 0px;
+    }
+
+    #selected-trailer {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1100px){
+    #selected-movie-info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 35px;
+    }
+
+    #selected-trailer {
+        width: 100%;
+    }
+
+    #selected-synopsis {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 1101px) and (min-width: 769px) {
+
+    #selected-movie-info {
+        align-items: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .column-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    form {
+        margin-top: 10px;
+    }
+
+    #header-h1 {
+        margin-top: 10px;
+    }
+
+    #top {
+        background: linear-gradient(to bottom right, #000000, #8a8585);
+    }
+}
+

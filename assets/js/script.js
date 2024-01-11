@@ -213,6 +213,9 @@ function storeMovieBtn(){
 $('#store-movie').on('click', storeMovieBtn);
 
 document.querySelector("#generate-btn").addEventListener("click", () => {
+      // removes class hidden from the selected movie upon clicked "generate movie"
+    $('#movie-choice').removeClass('hidden');
+      //scrolls to botto,
     window.scrollTo(0,document.body.scrollHeight);
   });
 
