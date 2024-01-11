@@ -126,7 +126,6 @@ function handleFormSubmit(event){
 
             // if the selected classification and movie classification are not the same, correctClass remains false and the loop runs again
         }while(correctClass == false);
-        movieOdbApiUrl = base_url + chosenMovie + api_key;
     
     // I only call to the OMDb api because I need info from it to make the youtube api call more accurate
 
@@ -134,6 +133,8 @@ function handleFormSubmit(event){
     }
     // This uses the movie picked from the array to create the url for the OMDb 
         // I'll also send this url to the my OMDb api function
+        movieOdbApiUrl = base_url + chosenMovie + api_key;
+
     movieAPIcall(movieOdbApiUrl);
     
 }
