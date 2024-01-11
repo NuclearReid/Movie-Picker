@@ -42,15 +42,10 @@ $(document).ready(function(){
 document.querySelector("#generate-btn").addEventListener("click", () => {
     // removes class hidden from the selected movie upon clicked "generate movie"
   $('#movie-choice').removeClass('hidden');
-    //scrolls to botto,
+    //scrolls to bottom
   window.scrollTo(0,document.body.scrollHeight);
 });
-// scrolls to bottom when the page gets cut off by the responsivity
-window.addEventListener('resize', function () {
-    if (window.innerWidth <= 1100) {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-});
+
 // the function used to get the movie based off the user's selections
 function handleFormSubmit(event){
     event.preventDefault();
@@ -253,7 +248,7 @@ $('#store-movie').on('click', storeMovieBtn);
 document.querySelector("#generate-btn").addEventListener("click", () => {
       // removes class hidden from the selected movie upon clicked "generate movie"
     $('#movie-choice').removeClass('hidden');
-      //scrolls to botto,
+      //scrolls to bottom
     window.scrollTo(0,document.body.scrollHeight);
   });
 
