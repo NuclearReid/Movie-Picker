@@ -27,6 +27,7 @@
               <p><i class="fa-solid fa-rotate-right" style="color: #ffffff;"></i></i> If you don't like the trailer, but still want the same preference, select "mmm, not feeling this one..."</p>
               <p><i class="fa-solid fa-angles-up" style="color: #ffffff;"></i> Something completely new? Hit this button in the bottom right corner to go back to the top</p>
               <p><i class="fa-solid fa-arrow-down" style="color: #ffffff;"></i> Changed your mind? Your saved movies can be accessed below</p>
+              
               <!-- <form id="saved-movies-list">
                 <label for="saved-movies" class="">Saved Movies:</label>
                     <select id="saved-movies" name="saved-movies" required>
@@ -68,7 +69,7 @@
                     <h2 id="h2-form" class="title">Movie Generator</h2>
 
                     <!-- genre selection -->
-                    <label for="genre">Select Genre:</label>
+                    <label for="genre" class="genre-label">Select Genre:</label>
                     <select id="genre" name="genre" required>
                         <option value="any-genre">ANY</option>
                         <option value="action">Action</option>
@@ -122,11 +123,18 @@
                         <div class="columns column-buttons">
                           <button id="new-movie-btn" type="submit" class="column">Mmm, not feeling this one...</button>  
                           <button id="store-movie" type="submit" class="column">I'll save this one for later!</button>
+                          <button id="scroll-up" class="is-hidden"><i class="fa-solid fa-arrow-up" style="color: #FFFFFF;"></i></button>
                         </div>
               </div>
             </div>
           </div>
+
+          
     </main>
+
+    <!-- <div class="footer">
+      <h4>Copyright 2024</h4>
+    </div> -->
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/js/listofmovies.js"></script>

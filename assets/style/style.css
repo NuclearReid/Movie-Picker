@@ -14,17 +14,34 @@ body {
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     /* consider Source Sans as new font-family */
-    background-color: #111;
+    background: linear-gradient(to bottom right, #000000, #8a8585);
+    height: 100vh;
     color: #fff;
 }
 
 #top {
-    background: linear-gradient(to bottom right, #000000, #8a8585);
-    height: 100vh;  
+    /* background: linear-gradient(to bottom right, #000000, #8a8585); */
+    height: fit-content;  
+    padding-bottom: 40px;
+    margin-bottom: -10px;
 }
 
-.section {
+/* .section {
     height: 100vh;
+} */
+
+.is-hidden {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+}
+
+.is-shown {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: inline-block;
 }
 
 header {
@@ -53,6 +70,9 @@ p {
 
 #h2-form {
     color: #4f8998 !important;
+    position: relative;
+    top: 30px;
+    /* left: 20px; */
 }
 
 form {
@@ -65,11 +85,11 @@ form {
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+/* .modal-content {
     background-color: #4f8998;
     padding: 20px;
     border-radius: 10px;
-}
+} */
 
 .saved-video {
     width: 100%;
@@ -84,14 +104,15 @@ form {
     margin-right: 10px;
 }
 
-.section {
-    height: 100vh;
-}
-
 label {
     display: block;
     margin-bottom: 10px;
     font-size: 18px;
+}
+
+.genre-label {
+    position: relative;
+    top: 50px;
 }
 
 input, select {
@@ -121,7 +142,18 @@ button:hover {
     background-color: #000000;
 }
 
+#movie-choice {
+    background-color: #111;
+}
 #movie-choice-title {
+    text-align: center;
+}
+
+.footer {
+    padding: 25px;
+    margin-top: auto;
+    margin-bottom: 0px;
+    background-color: #333;
     text-align: center;
 }
 
@@ -159,6 +191,10 @@ button:hover {
     #top {
         margin-bottom: 0;
         padding-bottom: 0;
+    }
+
+    form {
+        margin-bottom: 50px;
     }
 }
 
@@ -217,6 +253,10 @@ button:hover {
 
     #header-h1 {
         margin-top: 10px;
+    }
+
+    #top {
+        background: linear-gradient(to bottom right, #000000, #8a8585);
     }
 }
 

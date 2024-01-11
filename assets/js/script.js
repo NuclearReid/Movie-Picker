@@ -250,6 +250,13 @@ function storeMovieBtn(){
 }
 $('#store-movie').on('click', storeMovieBtn);
 
+document.querySelector("#generate-btn").addEventListener("click", () => {
+      // removes class hidden from the selected movie upon clicked "generate movie"
+    $('#movie-choice').removeClass('hidden');
+      //scrolls to botto,
+    window.scrollTo(0,document.body.scrollHeight);
+  });
+
 // The OMDb Api call function
 function movieAPIcall(movieOdbApiUrl){
     $.ajax({
@@ -281,6 +288,22 @@ function movieAPIcall(movieOdbApiUrl){
         }
     });
 }
+
+// Show/hide scroll-to-top button based on scroll position
+document.addEventListener('scroll', function () {
+    var scrollButton = document.getElementById('scroll-up');
+    if (window.scrollY > 200) {
+        scrollButton.classList.remove('is-hidden');
+        scrollButton.classList.add('is-shown');
+    } else {
+        scrollButton.classList.add('is-hidden');
+        scrollButton.classList.remove('is-shown');
+    }
+});
+
+document.querySelector("#scroll-up").addEventListener("click", () => {
+    window.scrollTo(0,0);
+});
 
 function movieAPIcallnoYT(movieOdbApiUrl){
     $.ajax({
