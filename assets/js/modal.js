@@ -25,3 +25,12 @@ $('#saved-movies').change(function () {
         closeModal();
     }
 });
+
+//     // If a specific option is selected, open the modal
+//     // not sure how to select anything and its generated?
+//     if (selectedOption === selectedOption) {
+//         openModal();
+//     } else {
+//         closeModal();
+//     }
+// });
