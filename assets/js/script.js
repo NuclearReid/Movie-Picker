@@ -18,7 +18,7 @@ var baseURL = 'https://www.youtube.com/embed/'
 var fullMovieUrl;
 
 // just a test url, not used anywhere else
-// var testUrl = "http://www.omdbapi.com/?t=Blade&apikey=9c8e80a7";
+
 
 // variables used when randomly selecting a movie
 var movieOdbApiUrl;
@@ -28,14 +28,12 @@ var theClass;
 
 $(document).ready(function(){
     var storedMovies = JSON.parse(localStorage.getItem('storedMovies'));
-    // chosenMovie = $('#saved-movies').val();
     for (var i=0; i< storedMovies.length; i += 2){
         var savedMovie = $('#saved-movies');
         var savedMovieOpt = $('<option>');
         savedMovieOpt.attr('value', chosenMovie);
         savedMovieOpt.text(storedMovies[i]);
         savedMovie.append(savedMovieOpt);
-        // console.log(storedMovies[i]);
     }
 })
 
@@ -65,13 +63,10 @@ function handleFormSubmit(event){
 
     if($('#new-movies').val() != 'new-movie'){
         chosenMovie = $('#saved-movies').val();
-        // console.log('saved movie picked');
-        // console.log(chosenMovie);
-        // savedMovieURL(chosenMovie);
+
     }
 
     if($('#saved-movies').val() == 'new-movie'){
-        // console.log('in the getting a new movie if statement');
     // This will be running until correctClass becomes true
         do{
             // I have an if statment for each genre. If the user selects 'any' then I run a random number generator that'll pick one of those if statements at random
@@ -121,13 +116,11 @@ function handleFormSubmit(event){
             }
 
             if(genre == 'horror'|| randomGenre == 4){
-                // console.log('in horror ' + genre);
                 var horrorMoviePick = Math.floor(Math.random()*horrorMovies.length);
                 chosenMovie = horrorMovies[horrorMoviePick][0];
                 theClass = horrorMovies[horrorMoviePick][1];
                 if(theClass == rating || rating == 'any-classification'){
                     correctClass = true;
-                    // console.log(chosenMovie +' and the classification '+ theClass);
                 }
             }
 
@@ -137,32 +130,16 @@ function handleFormSubmit(event){
     
     // I only call to the OMDb api because I need info from it to make the youtube api call more accurate
 
-    // This uses the movie picked from the array to create the url for the OMDb 
-        // I'll also send this url to the my OMDb api function
-    // console.log('going to the movieAPIcall');
     
     }
+    // This uses the movie picked from the array to create the url for the OMDb 
+        // I'll also send this url to the my OMDb api function
     movieAPIcall(movieOdbApiUrl);
     
 }
 // picks a movie within their criteria when they click on the form
 $('#selectionForm').on('submit', handleFormSubmit);
 
-// function savedMovieURL(chosenMovie){
-//     var storedMovies = JSON.parse(localStorage.getItem('storedMovies')) || [];
-//     // console.log('getting to savedMovieURL');
-//     // console.log(chosenMovie);
-//         for(var i = 0; i < storedMovies.length; i++){
-//             if((storedMovies[i] == chosenMovie) &&(storedMovies.length !== 0)){
-//                 trailerURL = storedMovies[i+1];
-//                 // console.log(trailerURL);
-//             }
-//         }
-//         // console.log('not using the youtube api');
-//         $('#selected-trailer').attr('src', trailerURL); 
-//         movieOdbApiUrl = base_url + chosenMovie + api_key;
-//         movieAPIcallnoYT(movieOdbApiUrl); 
-// }
 
 // Basically the same as handleFormSubmit() but doesn't have 'event.preventDefault();' <-- breaks the program if left in
 function handleButtonClick(){
@@ -170,11 +147,9 @@ function handleButtonClick(){
     var genre = $('#genre').val();
     var rating = $('#rating').val();
     var randomGenre = -1;
-    // console.log(genre + ' ' + rating);
     do{
         if(genre == 'any-genre'){
             randomGenre = Math.floor(Math.random()*5);
-            // console.log(randomGenre);
         }
         if(genre == 'action' || randomGenre == 0){
             var actionMoviePick = Math.floor(Math.random()*adventureMovies.length);
@@ -182,9 +157,7 @@ function handleButtonClick(){
             theClass = adventureMovies[actionMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                // console.log(chosenMovie + ' and the classification ' + theClass);
             }
-            // console.log(chosenMovie + ' and the classification ' + theClass);
         }
         if(genre == 'comedy' || randomGenre == 1){
             var comedyMoviePick = Math.floor(Math.random()*comedyMovies.length);
@@ -192,9 +165,7 @@ function handleButtonClick(){
             theClass = comedyMovies[comedyMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                // console.log(chosenMovie + ' and the classification ' + theClass);
             }
-            // console.log(chosenMovie + ' and the classification ' + theClass);
         }
         if(genre == 'drama'|| randomGenre == 2){
             var dramaMoviePick = Math.floor(Math.random()*dramaMovies.length);
@@ -202,9 +173,7 @@ function handleButtonClick(){
             theClass = dramaMovies[dramaMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                // console.log(chosenMovie + ' and the classification ' + theClass);
             }
-            // console.log(chosenMovie +' and the classification '+ theClass);
         }
         if(genre == 'fantasy'|| randomGenre == 3){
             var fantasyMoviePick = Math.floor(Math.random()*fantasyMovies.length);
@@ -212,7 +181,6 @@ function handleButtonClick(){
             theClass = fantasyMovies[fantasyMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                // console.log(chosenMovie + ' and the classification ' + theClass);
             }
         }
         if(genre == 'horror'|| randomGenre == 4){
@@ -221,7 +189,6 @@ function handleButtonClick(){
             theClass = horrorMovies[horrorMoviePick][1];
             if(theClass == rating || rating == 'any-classification'){
                 correctClass = true;
-                // console.log(chosenMovie +' and the classification '+ theClass);
             }
         }
     }while(correctClass == false);
@@ -242,7 +209,6 @@ function storeMovieBtn(){
         savedMovieOpt.attr('value', chosenMovie);
         savedMovieOpt.text(chosenMovie);
         savedMovie.append(savedMovieOpt);
-        // var storedYoutubeLink = JSON.parse(localStorage.getItem('storedYoutubeLink'))
         var storedMovies = JSON.parse(localStorage.getItem('storedMovies', chosenMovie))|| [];
         storedMovies.push(chosenMovie, trailerURL);
         localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
@@ -267,7 +233,6 @@ function movieAPIcall(movieOdbApiUrl){
             // console.log(response); 
             
             // sets the text of the page to display the title, year, and synopsis.
-            // $('#movie-choice-title').text(response.Title);
             $('#selected-title-year').text(response.Title + ' ('+response.Year +')')
             $('#selected-synopsis').text(response.Plot);
             
@@ -276,7 +241,6 @@ function movieAPIcall(movieOdbApiUrl){
             youtubeSearch = chosenMovie + ' (' + response.Year + ') '+ 'trailer';
             // creates the url that i'll be sending to the Youtube Api
              movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey0;
-            // console.log(youtubeSearch);
             // calls to the youtube api
              youtubeAPIcall(movieYoutubeApiUrl);
     }).fail(function(fail){
@@ -305,36 +269,6 @@ document.querySelector("#scroll-up").addEventListener("click", () => {
     window.scrollTo(0,0);
 });
 
-// function movieAPIcallnoYT(movieOdbApiUrl){
-//     $.ajax({
-//         url: movieOdbApiUrl,
-//         type: 'GET',
-//     }).then(function(response){
-//             // Process and use response as needed
-//             // console.log(response); 
-            
-//             // sets the text of the page to display the title, year, and synopsis.
-//             // $('#movie-choice-title').text(response.Title);
-//             $('#selected-title-year').text(response.Title + ' ('+response.Year +')')
-//             $('#selected-synopsis').text(response.Plot);
-            
-//             // I grab the year the movie was made from the JSON to create a more accurate search for the trailer on youtube
-//                 // Basically by putting in the year I know I won't be grabbing a re-make 
-//             youtubeSearch = chosenMovie + ' (' + response.Year + ') '+ 'trailer';
-//             // creates the url that i'll be sending to the Youtube Api
-//              movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey0;
-//             // console.log(youtubeSearch);
-//             // calls to the youtube api
-//     }).fail(function(fail){
-//         if(fail.status !== 200){
-            
-//             // this'll have to be changed from being an 'alert'
-//             alert('Could not get the info for that movie');
-//             return;
-//         }
-//     });
-// }
-
 // calls to the youtube api with the url I created in the OMDb api function
 var failCounter =0;
 var youtubeKeys = [youtubeKey0, youtubeKey1 ,youtubeKey2]
@@ -344,15 +278,12 @@ function youtubeAPIcall(movieYoutubeApiUrl){
         url: movieYoutubeApiUrl,
         method: 'GET'
     }).then(function(response){
-        // failCounter = 0;
-        // console.log(response);
+
         // gets the video id from the JSON 
         var movieID = response.items[0].id.videoId;
-        // console.log(movieID);
 
         // creates the url that'll be as the src in the <iframe> of the html
         trailerURL = baseURL + movieID;
-        // console.log(trailerURL);
 
         // sets the src of the <iframe> to the trailer url and embeds it into the html
        $('#selected-trailer').attr('src', trailerURL);
@@ -363,7 +294,6 @@ function youtubeAPIcall(movieYoutubeApiUrl){
             movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKeys[failCounter];
                 youtubeAPIcall(movieYoutubeApiUrl);
             // this'll have to be changed from being an 'alert'
-            // alert('Could not get the info for that movie');
             return;
         }
     });
