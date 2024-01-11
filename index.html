@@ -9,6 +9,7 @@
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <!-- <link rel="stylesheet" href="./assets/style/reset.css" /> -->
     <link rel="stylesheet" href="./assets/style/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://kit.fontawesome.com/b280342818.js" crossorigin="anonymous"></script>
 </head>
 
@@ -93,12 +94,34 @@
                           <button id="store-movie" type="submit" class="column">I'll save this one for later!</button>
                           <button id="scroll-up" class="is-hidden"><i class="fa-solid fa-arrow-up" style="color: #FFFFFF;"></i></button>
                         </div>
+                        <div id="resultNotification" class="notification is-hidden animate__animated animate__fadeIn">
+                          <i class="fas fa-check" style="color: #ffffff;"></i>
+                          Saved!
+                        </div>
               </div>
             </div>
           </div>
 
     </main>
     
+    <script>
+      document.getElementById('store-movie').addEventListener('click', function () {
+        // Simulating some task completion
+        // You can replace this with the actual logic of your task
+        // For now, just adding a delay to simulate asynchronous work
+        setTimeout(function () {
+          // Show the result notification
+          var notification = document.getElementById('resultNotification');
+          notification.classList.remove('is-hidden');
+  
+          // Set a timeout to hide the notification after 2 seconds
+          setTimeout(function () {
+            notification.classList.add('is-hidden');
+          }, 2000);
+  
+        }, 1000); // 2000 milliseconds (2 seconds) delay for simulation
+      });
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/js/listofmovies.js"></script>
     <script src="./assets/js/script.js"></script>

@@ -150,6 +150,11 @@ button:hover {
     text-align: center;
 }
 
+#resultNotification {
+    background-color: black;
+    color: white;
+}
+
 .footer {
     padding: 25px;
     margin-top: auto;
