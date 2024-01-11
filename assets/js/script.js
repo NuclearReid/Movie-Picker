@@ -27,7 +27,7 @@ var theClass;
 $(document).ready(function(){
     var storedMovies = JSON.parse(localStorage.getItem('storedMovies'));
 
-    for (var i=0; i< storedMovies.length; i++){
+    for (var i=0; i< storedMovies.length; i += 2){
         var savedMovie = $('#saved-movies');
         var savedMovieOpt = $('<option>');
         savedMovieOpt.attr('value', chosenMovie);
@@ -63,6 +63,7 @@ function handleFormSubmit(event){
     if($('#new-movies').val() != 'new-movie'){
         chosenMovie = $('#saved-movies').val();
     }
+
     if($('#saved-movies').val() == 'new-movie'){
     // This will be running until correctClass becomes true
         do{
@@ -202,6 +203,7 @@ function handleButtonClick(){
     movieOdbApiUrl = base_url + chosenMovie + api_key;
     youtubeSearch = chosenMovie + ' trailer';
     movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey0;
+    
     movieAPIcall(movieOdbApiUrl);    
 }
 // runs the program again if they click on the 'mmmm not feeling it' button
@@ -213,13 +215,12 @@ function storeMovieBtn(){
         var savedMovieOpt = $('<option>');
         savedMovieOpt.attr('value', chosenMovie);
         savedMovieOpt.text(chosenMovie);
-            savedMovie.append(savedMovieOpt);
-            
+        savedMovie.append(savedMovieOpt);
         
-        var storedMovies = JSON.parse(localStorage.getItem('storedMovies'))|| [];
-        storedMovies.push(chosenMovie);
-        
-            localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
+        // var storedYoutubeLink = JSON.parse(localStorage.getItem('storedYoutubeLink'))
+        var storedMovies = JSON.parse(localStorage.getItem('storedMovies', chosenMovie, movieYoutubeApiUrl))|| [];
+        storedMovies.push(chosenMovie, movieYoutubeApiUrl);
+        localStorage.setItem('storedMovies', JSON.stringify(storedMovies, movieYoutubeApiUrl));
     }
 }
 $('#store-movie').on('click', storeMovieBtn);
