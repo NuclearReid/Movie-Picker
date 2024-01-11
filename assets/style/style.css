@@ -159,10 +159,10 @@ button:hover {
     text-align: center;
 }
 
-/* .responsive-gif {
+.responsive-gif {
     max-width: 100%;
     height: auto;
-} */
+}
 
 
 /* dynamic interactions */
@@ -171,11 +171,6 @@ button:hover {
 .hidden {
     display: none;
 }
-
-/* .youtube-video {
-  aspect-ratio: 16 / 9;
-  width: 100%;
-} */
 
 /* widescreen */
 @media (min-width: 1216px) {
@@ -214,6 +209,15 @@ button:hover {
     #selected-trailer {
         width: 100%;
     }
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+  
+    /* adjust scroll up button so it doesnt overlap */
+}
+@media (max-width: 400px) {
+  
+    /* adjust scroll up button so it doesnt overlap */
 }
 
 @media (max-width: 1100px){
@@ -260,5 +264,9 @@ button:hover {
     #top {
         background: linear-gradient(to bottom right, #000000, #8a8585);
     }
-}
 
+    #new-movie-btn,
+    #store-movie {
+        margin-top: 0px;
+    }
+}
