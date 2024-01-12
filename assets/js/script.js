@@ -1,6 +1,6 @@
 // API key and URL for OMDb Api
 var api_key = "&apikey=9c8e80a7";
-var base_url = "http://www.omdbapi.com/?t=";
+var base_url = "https://www.omdbapi.com/?t=";
 
 // API key and URL for Youtube
 var youtubeurl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&q='
