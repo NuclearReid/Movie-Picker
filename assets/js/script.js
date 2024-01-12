@@ -8,17 +8,18 @@ var youtubeSearch = '';
 // var youtubeKeyFail = '&key=Fail';
 var youtubeKey0 = '&key=AIzaSyCvhXEbyltDGuCtrFOaI6nykv5vIV5mvm4';
 var youtubeKey1 = '&key=AIzaSyDW44gDTh3prpr7UOb9ccppmyNIVmr-rH8';
-var youtubeKey2 = '&key=AIzaSyCQ3uXWHEAcfDKiLcK3JZW8iZL4BLkxsdo';
+var youtubeKey2 = '&key=AIzaSyDCmq6dtV3eKpAJDNLOxYyoQXkHpER-Shs';
 var movieYoutubeApiUrl;
-
 var trailerURL ='';
+
+// calls to the youtube api with the url I created in the OMDb api function
+var failCounter =0;
+var youtubeKeys = [youtubeKey0, youtubeKey1 ,youtubeKey2]
+
 
 // this url is needed so we can embed the youtube video into the website
 var baseURL = 'https://www.youtube.com/embed/'
 var fullMovieUrl;
-
-// just a test url, not used anywhere else
-
 
 // variables used when randomly selecting a movie
 var movieOdbApiUrl;
@@ -40,11 +41,17 @@ $(document).ready(function(){
 document.querySelector("#generate-btn").addEventListener("click", () => {
     // removes class hidden from the selected movie upon clicked "generate movie"
   $('#movie-choice').removeClass('hidden');
-    //scrolls to bottom
+    //scrolls to botto,
   window.scrollTo(0,document.body.scrollHeight);
 });
 
-// the function used to get the movie based off the user's selections
+// scrolls to bottom when the page gets cut off by the responsivity
+window.addEventListener('resize', function () {
+    if (window.innerWidth <= 1100) {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+});
+
 function handleFormSubmit(event){
     event.preventDefault();
     // starts correctClass as false otherwise it if you run the form twice it would be true from the last time it was run
@@ -52,28 +59,35 @@ function handleFormSubmit(event){
     // gets the values from the form (not the text value but the value set by 'value="_____"' in the HTML
     var genre = $('#genre').val();
     var rating = $('#rating').val();
-    // This will only be used if the user selects 'Any' for the genre
+    // This variable will only be used if the user selects 'Any' for the genre
         // It's set to -1 because -1 is not checked in any of the if statements and i still wanted it declared before starting the do while statement
     var randomGenre = -1;
 
+    // Basically looking to see if the user wants a saved movie or a new movie
     if($('#new-movies').val() != 'new-movie'){
+        // If the user wants a saved movie, then the value set of the chosen movie is that saved movie's value
         chosenMovie = $('#saved-movies').val();
-
     }
 
+    // if the user wants a new movie, this code will generate a new movie based off their selection
     if($('#saved-movies').val() == 'new-movie'){
-    // This will be running until correctClass becomes true
+
+    // This will run until 'correctClass' becomes true (when correctClass is true that means the movie selected is the right genre and rating)
         do{
-            // I have an if statment for each genre. If the user selects 'any' then I run a random number generator that'll pick one of those if statements at random
+            // I have an if statment for each genre. If the user selects 'any' then I run a random number generator 
+            // This random number will be used to select the genre (0 will pick action, 1 will pick comedy, 2 will pick drama etc etc)
             if(genre == 'any-genre'){
                 randomGenre = Math.floor(Math.random()*5);
             }
-            // Each of these if statements essentially work the same, looks to see if the user selected 'action' or if randomGenre is 0
-                // the randomGenre is only used if the user selected 'any'
+
+            // Each of these if statements essentially work the same
+                // They look to see if the user selected 'action' or if randomGenre var matches with if statment
+                // (the randomGenre is only used if the user selected 'any')
             if(genre == 'action' || randomGenre == 0){
                 // selects a random spot from the action movie array
                 var actionMoviePick = Math.floor(Math.random()*adventureMovies.length);
                 // gets the movie title from that random spot (this is what'll be sent to the OMDb api)
+                //   this is the spot in the array-----v       v------this is the spot in the nested array [0] is the title [1] is the classification
                 chosenMovie = adventureMovies[actionMoviePick][0];
                 
                 // gets the classification from that random spot
@@ -85,6 +99,7 @@ function handleFormSubmit(event){
                     correctClass = true;
                 }
             }
+
             if(genre == 'comedy' || randomGenre == 1){
                 var comedyMoviePick = Math.floor(Math.random()*comedyMovies.length);
                 chosenMovie = comedyMovies[comedyMoviePick][0];
@@ -93,6 +108,7 @@ function handleFormSubmit(event){
                     correctClass = true;
                 }
             }
+
             if(genre == 'drama' || randomGenre == 2){
                 var dramaMoviePick = Math.floor(Math.random()*dramaMovies.length);
                 chosenMovie = dramaMovies[dramaMoviePick][0];
@@ -101,6 +117,7 @@ function handleFormSubmit(event){
                     correctClass = true;
                 }
             }
+
             if(genre == 'fantasy' || randomGenre == 3){
                 var fantasyMoviePick = Math.floor(Math.random()*fantasyMovies.length);
                 chosenMovie = fantasyMovies[fantasyMoviePick][0];
@@ -121,15 +138,11 @@ function handleFormSubmit(event){
 
             // if the selected classification and movie classification are not the same, correctClass remains false and the loop runs again
         }while(correctClass == false);
-    
-    // I only call to the OMDb api because I need info from it to make the youtube api call more accurate
-
-    
+    // I only call to the OMDb api because I need info from it to make the youtube api call more accurate 
     }
     // This uses the movie picked from the array to create the url for the OMDb 
-        // I'll also send this url to the my OMDb api function
-        movieOdbApiUrl = base_url + chosenMovie + api_key;
-
+    movieOdbApiUrl = base_url + chosenMovie + api_key;
+    // Sends that created URL to the OMDb api
     movieAPIcall(movieOdbApiUrl);
     
 }
@@ -138,20 +151,26 @@ $('#selectionForm').on('submit', handleFormSubmit);
 
 
 // Basically the same as handleFormSubmit() but doesn't have 'event.preventDefault();' <-- breaks the program if left in
+    // it's used for if the user clicks the 'mmmm not feeling this one' button
 function handleButtonClick(){
     correctClass = false;
     var genre = $('#genre').val();
     var rating = $('#rating').val();
     var randomGenre = -1;
+    console.log('in the handlebuttonclick');
     do{
+        console.log('in the start of the do while');
         if(genre == 'any-genre'){
             randomGenre = Math.floor(Math.random()*5);
         }
         if(genre == 'action' || randomGenre == 0){
+            console.log('in action '+ genre);
             var actionMoviePick = Math.floor(Math.random()*adventureMovies.length);
             chosenMovie = adventureMovies[actionMoviePick][0];
             theClass = adventureMovies[actionMoviePick][1];
+            console.log(theClass);
             if(theClass == rating || rating == 'any-classification'){
+                console.log('in correct rating '+ rating);
                 correctClass = true;
             }
         }
@@ -198,27 +217,6 @@ function handleButtonClick(){
 // runs the program again if they click on the 'mmmm not feeling it' button
 $('#new-movie-btn').on('click', handleButtonClick);
 
-function storeMovieBtn(){
-    if(chosenMovie != 'null'){
-        var savedMovie = $('#saved-movies');
-        var savedMovieOpt = $('<option>');
-        savedMovieOpt.attr('value', chosenMovie);
-        savedMovieOpt.text(chosenMovie);
-        savedMovie.append(savedMovieOpt);
-        var storedMovies = JSON.parse(localStorage.getItem('storedMovies', chosenMovie))|| [];
-        storedMovies.push(chosenMovie, trailerURL);
-        localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
-    }
-}
-$('#store-movie').on('click', storeMovieBtn);
-
-document.querySelector("#generate-btn").addEventListener("click", () => {
-      // removes class hidden from the selected movie upon clicked "generate movie"
-    $('#movie-choice').removeClass('hidden');
-      //scrolls to bottom
-    window.scrollTo(0,document.body.scrollHeight);
-  });
-
 // The OMDb Api call function
 function movieAPIcall(movieOdbApiUrl){
     $.ajax({
@@ -226,49 +224,32 @@ function movieAPIcall(movieOdbApiUrl){
         type: 'GET',
     }).then(function(response){
             // Process and use response as needed
-            // console.log(response); 
-            
-            // sets the text of the page to display the title, year, and synopsis.
+
+            // sets the text of the page to display the title, year, and synopsis. 
+            // (I was having an error when using 'response.year'. HAS to be exact to the json which is 'response.Year')
             $('#selected-title-year').text(response.Title + ' ('+response.Year +')')
             $('#selected-synopsis').text(response.Plot);
             
             // I grab the year the movie was made from the JSON to create a more accurate search for the trailer on youtube
-                // Basically by putting in the year I know I won't be grabbing a re-make 
+                // Basically by putting in the year I know I won't be grabbing a re-make (ie the live action lion king instead of the animated lion king)
             youtubeSearch = chosenMovie + ' (' + response.Year + ') '+ 'trailer';
+
             // creates the url that i'll be sending to the Youtube Api
-             movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey0;
+             movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKey2;
             // calls to the youtube api
              youtubeAPIcall(movieYoutubeApiUrl);
+
     }).fail(function(fail){
         if(fail.status !== 200){
-            
-            // this'll have to be changed from being an 'alert'
-            alert('Could not get the info for that movie');
+        // make a list of all the things the user could be doing with their time if they didn't watch a movie
+            $('#selected-title-year').text("We couldn't get the movie. Think about what you could be doing!");
+            $('#selected-synopsis').text("That pile of clothes you've been putting off? Maybe get that sorted. Another option, Did you know meal preping can save about $2,600 a year? Maybe use this time to get some lunches made! Or that coding project you've been putting off? Get that done!");
             return;
         }
     });
 }
 
-// Show/hide scroll-to-top button based on scroll position
-document.addEventListener('scroll', function () {
-    var scrollButton = document.getElementById('scroll-up');
-    if (window.scrollY > 200) {
-        scrollButton.classList.remove('is-hidden');
-        scrollButton.classList.add('is-shown');
-    } else {
-        scrollButton.classList.add('is-hidden');
-        scrollButton.classList.remove('is-shown');
-    }
-});
-
-document.querySelector("#scroll-up").addEventListener("click", () => {
-    window.scrollTo(0,0);
-});
-
-// calls to the youtube api with the url I created in the OMDb api function
-var failCounter =0;
-var youtubeKeys = [youtubeKey0, youtubeKey1 ,youtubeKey2]
-
+// Works the call to the YouTube API
 function youtubeAPIcall(movieYoutubeApiUrl){
     $.ajax({
         url: movieYoutubeApiUrl,
@@ -286,12 +267,65 @@ function youtubeAPIcall(movieYoutubeApiUrl){
 
     }).fail(function(fail){
         if(fail.status !== 200){
-            failCounter = (failCounter + 1) % youtubeKeys.length;
-            movieYoutubeApiUrl = youtubeurl + youtubeSearch + youtubeKeys[failCounter];
-                youtubeAPIcall(movieYoutubeApiUrl);
-            // this'll have to be changed from being an 'alert'
+            //figure out what to append if nothing happens (maybe the poster of the movie)
+
             return;
         }
     });
 }
+
+// stores the movie title into the local storage
+    // also stores the trailerURL but that's not currently being used anywhere else
+function storeMovieBtn(){
+    // if the chosen movie isn't null, will store data. I don't want 'null' to ever somehow make it into the local storage
+        // a null value was getting stored at some point but i forget when
+    if(chosenMovie != 'null'){
+        var storedMovies = JSON.parse(localStorage.getItem('storedMovies', chosenMovie))|| [];
+        // this variable is used to make sure i'm not storing the same movie twice
+        var newMovie = true;
+        // cycles through the saved movies
+        for(var i = 0; i<storedMovies.length;i++){
+            // If the chosen movie is already in the array then it won't let you save it again
+            if(storedMovies[i] == chosenMovie){
+                newMovie = false;
+            }
+        }
+        // if the movie isn't in the local storage:
+            // appends the name of the movie to the 'Saved Movies' drop down menu and stores it in the local storage
+        if(newMovie == true){
+            var savedMovie = $('#saved-movies');
+            var savedMovieOpt = $('<option>');
+            savedMovieOpt.attr('value', chosenMovie);
+            savedMovieOpt.text(chosenMovie);
+            savedMovie.append(savedMovieOpt);
+            storedMovies.push(chosenMovie, trailerURL);
+            localStorage.setItem('storedMovies', JSON.stringify(storedMovies));
+        }
+    }
+}
+$('#store-movie').on('click', storeMovieBtn);
+
+document.querySelector("#generate-btn").addEventListener("click", () => {
+      // removes class hidden from the selected movie upon clicked "generate movie"
+    $('#movie-choice').removeClass('hidden');
+      //scrolls to botto,
+    window.scrollTo(0,document.body.scrollHeight);
+  });
+
+// Show/hide scroll-to-top button based on scroll position
+document.addEventListener('scroll', function () {
+    var scrollButton = document.getElementById('scroll-up');
+    if (window.scrollY > 200) {
+        scrollButton.classList.remove('is-hidden');
+        scrollButton.classList.add('is-shown');
+    } else {
+        scrollButton.classList.add('is-hidden');
+        scrollButton.classList.remove('is-shown');
+    }
+});
+
+document.querySelector("#scroll-up").addEventListener("click", () => {
+    window.scrollTo(0,0);
+});
+
 
