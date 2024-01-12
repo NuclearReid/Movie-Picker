@@ -26,10 +26,6 @@ body {
     margin-bottom: -10px;
 }
 
-/* .section {
-    height: 100vh;
-} */
-
 .is-hidden {
     position: fixed;
     bottom: 20px;
@@ -126,7 +122,6 @@ input, select {
     color: #fff;
 }
 
-
 button {
     background-color: #4f8998;
     color: #fffefe;
@@ -150,8 +145,14 @@ button:hover {
 #movie-choice {
     background-color: #111;
 }
+
 #movie-choice-title {
     text-align: center;
+}
+
+#resultNotification {
+    background-color: black;
+    color: white;
 }
 
 .footer {
@@ -162,10 +163,10 @@ button:hover {
     text-align: center;
 }
 
-.responsive-gif {
+/* .responsive-gif {
     max-width: 100%;
     height: auto;
-}
+} */
 
 
 /* dynamic interactions */
@@ -271,5 +272,22 @@ button:hover {
     #new-movie-btn,
     #store-movie {
         margin-top: 0px;
+    }
+}
+
+/* genre button */
+@media (max-width: 852px) and (min-width: 769px) {
+
+    .genre-label {
+        position: relative;
+        top: 15px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 508px) {
+
+    .genre-label {
+        position: relative;
+        top: 90px;
     }
 }
