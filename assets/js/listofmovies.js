@@ -118,7 +118,7 @@ var dramaMovies = [
 // ADVENTURE MOVIES
 var adventureMovies = [
   ["The Lord of the Rings: The Fellowship of the Ring", "PG"],
-  ["Indiana Jones and the Raiders of the Lost Ark", "PG"],
+  ["Raiders of the Lost Ark", "PG"],
   ["Jurassic Park", "PG"],
   ["Star Wars: Episode IV - A New Hope", "PG"],
   ["The Lion King", "PG"],
