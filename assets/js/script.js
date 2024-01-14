@@ -328,4 +328,17 @@ document.querySelector("#scroll-up").addEventListener("click", () => {
     window.scrollTo(0,0);
 });
 
+// notification upon successfully saving movie
+document.getElementById('store-movie').addEventListener('click', function () {
+    setTimeout(function () {
+      // Show the result notification
+      var notification = document.getElementById('resultNotification');
+      notification.classList.remove('is-hidden');
 
+      // Set a timeout to hide the notification after 2 seconds
+      setTimeout(function () {
+        notification.classList.add('is-hidden');
+      }, 2000);
+
+    }, 1000);
+  });
