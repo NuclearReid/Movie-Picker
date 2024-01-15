@@ -71,14 +71,29 @@ I WANT to be able to access a list of saved movies.
 SO THAT I can continue to look for movies but still have the opportunity to change my mind.
 ```
 
-<!-- 
 ## Objectives
-```
-Scenario: ...
-GIVEN: ...
-WHEN: ...
-THEN: ...
-``` -->
+``` 
+GIVEN: I am on the homepage of movie generator
+WHEN: I input my preferences and click "Generate Movie"
+THEN: I am displayed with a trailer, title, release date and synopsis
+
+GIVEN: I have been presented a movie, but I dont like it
+WHEN: I click the "mmm, not feeling it..." button 
+THEN: A new movie will be generated for me
+
+GIVEN: I like the movie that I've been presented with
+WHEN: I click the "save movie" button 
+THEN: A notification "saved!" will pop up, alerting me to its success, and will save into local storage
+
+GIVEN: I want a different genre or classification
+WHEN: I click the scroll up button it will take me back to generator form
+THEN: I can submit new preferences and a new movie will be generated
+
+GIVEN: I'd like to access a saved movie
+WHEN: I select my saved movie from the list
+THEN: the other preferences will be over ridden and I will be returned with the saved movies information
+
+``` 
 
 ## Overview
 #### Features:
